@@ -1,0 +1,9 @@
+{
+  "tailwindCSS.lint.invalidTailwindDirective": "ignore",
+  "tailwindCSS.experimental.configFile": null,
+  "files.associations": { "*.css": "tailwindcss" },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "editor.formatOnSave": true
+}
