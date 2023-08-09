@@ -4,6 +4,9 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+],
   "scripts": {
     "build": "vite build && vite preview --open",
     "build:prod": "NODE_ENV=production vite build",
@@ -11,7 +14,7 @@
     "dev": "vite --open",
     "format": "prettier --write .",
     "preview": "vite preview",
-    "start:server": "cd proxy-server && node server.js"
+    "start:server": "yarn workspace proxy-server start"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0",

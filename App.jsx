@@ -25,11 +25,7 @@ export default function ProductExplorer() {
     <ApolloProvider client={DataFetcher}>
       <ProductCategories onCategorySelect={handleCategorySelect} />
       {selectedCategory && <ProductList categoryUid={selectedCategory} onProductSelect={handleProductSelect} />}
-      {selectedProduct && (
-        // <Modal>
-        <ProductDetails productSku={selectedProduct} />
-        // </Modal>
-      )}
+      {selectedProduct && <ProductDetails productSku={selectedProduct} />}
     </ApolloProvider>
   );
 }

@@ -26,6 +26,7 @@ export default function ProductDetailsQuery(productSku) {
           ... on ConfigurableProduct {
             stock_status
             configurable_options {
+              uid
               label
               values {
                 label

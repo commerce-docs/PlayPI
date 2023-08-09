@@ -1,29 +1,33 @@
-import { RadioGroup } from '@headlessui/react';
-import ButtonOption from '../OptionButton';
-import ColorOption from '../OptionColor';
+import ColorPicker from '../ColorPicker';
+import OptionPicker from '../OptionPicker';
 
 export default function Options({ options, selectedOption, setSelectedOption, selectedProduct }) {
-  if (!Array.isArray(options.values)) {
-    return null;
+  function getSwatchData(options) {
+    const {swatch_data} = options[0].values[0];
+    return swatch_data;
   }
-  console.log('options.values:', options.values);
+
+  const {__typename} = getSwatchData(options);
+
   return (
-    <div className="mt-8">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-gray-900">{options.label}</h2>
-      </div>
-      <RadioGroup value={selectedOption} onChange={setSelectedOption} className="mt-2">
-        <RadioGroup.Label className="sr-only">Choose a {options.label}</RadioGroup.Label>
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-          {options.values.map((option) => {
-            if (option.swatch_data.value.contains('#')) {
-              <ColorOption option={option} />;
-            } else {
-              <ButtonOption option={option} selectedProduct={selectedProduct} />;
-            }
-          })}
-        </div>
-      </RadioGroup>
+    <div className="mt-4">
+      {options.map((option) => {
+        return __typename === 'ColorSwatchData' ? (
+          <ColorPicker
+            key={option.uid}
+            option={option}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+          />
+        ) : __typename === 'TextSwatchData' ? (
+          <OptionPicker
+            option={option}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+            selectedProduct={selectedProduct}
+          />
+        ) : null;
+      })}
     </div>
   );
 }

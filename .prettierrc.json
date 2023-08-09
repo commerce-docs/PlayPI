@@ -1,5 +1,5 @@
 {
-  "printWidth": 120,
+  "printWidth": 110,
   "trailingComma": "all",
   "tabWidth": 2,
   "useTabs": false,
@@ -10,7 +10,7 @@
     {
       "files": "*.md",
       "options": {
-        "tabWidth": 4
+        "tabWidth": 2
       }
     }
   ]

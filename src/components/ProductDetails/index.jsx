@@ -22,8 +22,8 @@ export default function ProductDetails({ productSku }) {
     if (data) {
       const product = data.products?.items[0];
       setSelectedProduct(product);
-      if (product.configurable_options) {
-        setConfigurableOptions(product.configurable_options);
+      if (data.products?.items[0].configurable_options) {
+        setConfigurableOptions(data.products?.items[0].configurable_options);
       }
     }
   }, [data]);
@@ -32,7 +32,6 @@ export default function ProductDetails({ productSku }) {
   if (error) return <p>Error: {error.message}</p>;
 
   if (!selectedProduct) return <Spinner />;
-
   const isConfigurableProduct = Boolean(selectedProduct.configurable_options);
   const hasCustomAttributes = Boolean(selectedProduct.custom_attributes);
 
@@ -52,14 +51,14 @@ export default function ProductDetails({ productSku }) {
             <Images selectedProduct={selectedProduct} />
             <div className="mt-8 lg:col-span-5">
               <form>
-                {isConfigurableProduct && (
+                {isConfigurableProduct && 
                   <Options
                     options={configurableOptions}
                     selectedOption={selectedOption}
                     setSelectedOption={setSelectedOption}
                     selectedProduct={selectedProduct}
                   />
-                )}
+                }
                 <Button sku={selectedProduct.sku} label="Add to cart" />
               </form>
               <Description description={selectedProduct.description} />
