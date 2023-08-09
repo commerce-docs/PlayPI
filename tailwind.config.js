@@ -1,12 +1,17 @@
-const defaultTheme = require("tailwindcss/defaultTheme");
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}", "./index.html", "./App.jsx"],
-  darkMode: "media",
+  content: [
+    './src/**/*.{html,js,jsx}',
+    './index.html',
+    './App.jsx',
+    './src/**/*.jsx',
+  ],
+  darkMode: 'media',
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
   },
@@ -14,8 +19,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require("@tailwindcss/aspect-ratio"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
   ],
 };

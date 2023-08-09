@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export default function getListQuery(categoryUid) {
+export default function ProductListQuery(categoryUid) {
   return gql`
     query {
       products(filter: { category_uid: { eq: "${categoryUid}" } }, pageSize: 12) {

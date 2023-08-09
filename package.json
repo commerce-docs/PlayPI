@@ -5,16 +5,19 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite --open",
     "build": "vite build && vite preview --open",
-    "preview": "vite preview",
+    "build:prod": "NODE_ENV=production vite build",
+    "clean": "rm -rf dist && rm -rf node_modules",
+    "dev": "vite --open",
     "format": "prettier --write .",
-    "clean": "rm -rf dist && rm -rf node_modules"
+    "preview": "vite preview",
+    "start:server": "cd proxy-server && node server.js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.0",
     "@headlessui/react": "^1.7.16",
     "@heroicons/react": "^2.0.18",
+    "classnames": "^2.3.2",
     "graphql": "^16.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

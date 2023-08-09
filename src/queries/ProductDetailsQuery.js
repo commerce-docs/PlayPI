@@ -1,12 +1,12 @@
 import { gql } from '@apollo/client';
 
-export default function getDetailsQuery(productSku) {
+export default function ProductDetailsQuery(productSku) {
   return gql`
     query {
       products(filter: { sku: { eq: "${productSku}" } }) {
         total_count
         items {
-          id
+          uid
           sku
           name
           categories {
@@ -37,6 +37,7 @@ export default function getDetailsQuery(productSku) {
           }
           custom_attributes {
             attribute_metadata {
+              uid
               label
             }
             selected_attribute_options {
