@@ -6,7 +6,7 @@ import Modal from './src/components/base/Modal';
 import './app.css';
 
 import { ApolloProvider } from '@apollo/client';
-import DataFetcher from './src/data/DataFetcher';
+import DataFetcher from './src/queries/DataFetcher';
 
 export default function ProductExplorer() {
   const [selectedCategory, setSelectedCategory] = useState('MTg=');

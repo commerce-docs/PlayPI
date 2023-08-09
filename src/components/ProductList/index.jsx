@@ -1,12 +1,12 @@
 import Spinner from '../base/Spinner';
 import Price from '../base/Price';
 
-// Commerce query
 import { useQuery } from '@apollo/client';
-import ProductListData from '../../data/ProductListData';
+import ProductListQuery from '../../queries/ProductListQuery';
 
 const ProductList = ({ categoryUid, onProductSelect }) => {
-  const { data } = useQuery(ProductListData(categoryUid));
+  // Fetch the products for the selected category
+  const { data } = useQuery(ProductListQuery(categoryUid));
   const products = data?.products?.items || [];
 
   if (!products.length) {

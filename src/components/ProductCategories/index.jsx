@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import Spinner from '../base/Spinner';
 import classNames from 'classnames';
 
-// Commerce query
 import { useQuery } from '@apollo/client';
-import ProductCategoriesData from '../../data/ProductCategoriesData';
+import ProductCategoriesQuery from '../../queries/ProductCategoriesQuery';
 
 const ProductCategories = ({ onCategorySelect }) => {
-  const { data } = useQuery(ProductCategoriesData(2));
+  // Query for categories based on the store id
+  const { data } = useQuery(ProductCategoriesQuery(2));
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('MTg=');

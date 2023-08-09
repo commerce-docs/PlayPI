@@ -7,12 +7,12 @@ import Attributes from '../base/Attributes';
 import Price from '../base/Price';
 import Options from '../base/Options';
 
-// Commerce query
 import { useQuery } from '@apollo/client';
-import ProductDetailsData from '../../data/ProductDetailsData';
+import ProductDetailsQuery from '../../queries/ProductDetailsQuery';
 
 export default function ProductDetails({ productSku }) {
-  const { loading, error, data } = useQuery(ProductDetailsData(productSku));
+  // Fetch the product details
+  const { loading, error, data } = useQuery(ProductDetailsQuery(productSku));
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
