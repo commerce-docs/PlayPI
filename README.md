@@ -33,9 +33,17 @@ The `base` directory contains a variety of other components used within the thre
 
 Tailwindcss is used for all component styling.
 
+## Usage
+
+1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
+2. Change directories: `cd playpi.git`
+3. Run `yarn` to install dependencies.
+4. Run `yarn start:server` to start the project's proxy server so you can access Venia's GraphQL endpoint.
+5. Open another terminal (to keep the proxy-server running)
+6. Run `yarn dev` to launch the product page example.
+
 ## The future of Commerce components
 
 The components in this project are not meant to be beacons of best-practices. Frontends are hard. And commerce frontends are even harder.
 
 So what should you do? Let me introduce the future of storefront components: Adobe Commerce Dropins and the Elsie SDK needed to build them... Stay tuned!
-
