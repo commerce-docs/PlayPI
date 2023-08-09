@@ -1,6 +1,6 @@
 import { RadioGroup } from '@headlessui/react';
-import ButtonOption from './OptionButton';
-import ColorOption from './OptionColor';
+import ButtonOption from '../OptionButton';
+import ColorOption from '../OptionColor';
 
 export default function Options({ options, selectedOption, setSelectedOption, selectedProduct }) {
   if (!Array.isArray(options.values)) {

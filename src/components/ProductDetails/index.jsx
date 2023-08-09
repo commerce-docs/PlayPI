@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
 import Spinner from '../base/Spinner';
-import Images from './Images';
+import Images from '../base/Images';
 import Button from '../base/Button';
-import Description from './Description';
-import Attributes from './Attributes';
+import Description from '../base/Description';
+import Attributes from '../base/Attributes';
 import Price from '../base/Price';
-import Options from './Options';
+import Options from '../base/Options';
 
 // Commerce query
 import { useQuery } from '@apollo/client';
-import ProductDetailsQuery from '../../queries/ProductDetailsQuery';
+import ProductDetailsData from '../../data/ProductDetailsData';
 
 export default function ProductDetails({ productSku }) {
-  const { loading, error, data } = useQuery(ProductDetailsQuery(productSku));
+  const { loading, error, data } = useQuery(ProductDetailsData(productSku));
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);

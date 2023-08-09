@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export default function ProductDetailsQuery(productSku) {
+export default function ProductDetailsData(productSku) {
   return gql`
     query {
       products(filter: { sku: { eq: "${productSku}" } }) {

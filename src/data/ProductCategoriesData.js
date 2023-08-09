@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export default function ProductCategoriesQuery(parentId) {
+export default function ProductCategoriesData(parentId) {
   return gql`
     query {
       categories(filters: { parent_id: { eq: "${parentId}" } }, currentPage: 1) {

@@ -6,7 +6,7 @@ import Modal from './src/components/base/Modal';
 import './app.css';
 
 import { ApolloProvider } from '@apollo/client';
-import CommerceEndpoint from './src/queries/CommerceEndpoint';
+import DataFetcher from './src/data/DataFetcher';
 
 export default function ProductExplorer() {
   const [selectedCategory, setSelectedCategory] = useState('MTg=');
@@ -22,7 +22,7 @@ export default function ProductExplorer() {
   };
 
   return (
-    <ApolloProvider client={CommerceEndpoint}>
+    <ApolloProvider client={DataFetcher}>
       <ProductCategories onCategorySelect={handleCategorySelect} />
       {selectedCategory && <ProductList categoryUid={selectedCategory} onProductSelect={handleProductSelect} />}
       {selectedProduct && (

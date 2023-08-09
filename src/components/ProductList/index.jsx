@@ -3,10 +3,10 @@ import Price from '../base/Price';
 
 // Commerce query
 import { useQuery } from '@apollo/client';
-import ProductListQuery from '../../queries/ProductListQuery';
+import ProductListData from '../../data/ProductListData';
 
 const ProductList = ({ categoryUid, onProductSelect }) => {
-  const { data } = useQuery(ProductListQuery(categoryUid));
+  const { data } = useQuery(ProductListData(categoryUid));
   const products = data?.products?.items || [];
 
   if (!products.length) {

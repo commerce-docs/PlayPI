@@ -4,10 +4,10 @@ import classNames from 'classnames';
 
 // Commerce query
 import { useQuery } from '@apollo/client';
-import ProductCategoriesQuery from '../../queries/ProductCatagoriesQuery';
+import ProductCategoriesData from '../../data/ProductCategoriesData';
 
 const ProductCategories = ({ onCategorySelect }) => {
-  const { data } = useQuery(ProductCategoriesQuery(2));
+  const { data } = useQuery(ProductCategoriesData(2));
 
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('MTg=');
