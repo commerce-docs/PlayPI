@@ -33,7 +33,7 @@ The `base` directory contains a variety of other components used within the thre
 
 Tailwindcss is used for all component styling.
 
-## Usage
+## Run the app
 
 1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
 2. Change directories: `cd playpi.git`
@@ -41,6 +41,8 @@ Tailwindcss is used for all component styling.
 4. Run `yarn start:server` to start the project's proxy server so you can access Venia's GraphQL endpoint.
 5. Open another terminal (to keep the proxy-server running)
 6. Run `yarn dev` to launch the product page example.
+
+> NOTE: I still need to get the `ProductDetails` appearing in a modal. Right now it displays at the bottom of the page.
 
 ## The future of Commerce components
 
