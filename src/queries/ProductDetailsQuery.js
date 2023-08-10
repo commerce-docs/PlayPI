@@ -13,6 +13,12 @@ export default function ProductDetailsQuery(productSku) {
             name
           }
           price_range {
+            maximum_price {
+              final_price {
+                value
+                currency
+              }
+            }        
             minimum_price {
               final_price {
                 value
