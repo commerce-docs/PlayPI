@@ -2,12 +2,27 @@ import ColorPicker from '../ColorPicker';
 import OptionPicker from '../OptionPicker';
 
 export default function Options({ options, selectedOption, setSelectedOption, selectedProduct }) {
+  // console.log('options:', options);
+  // console.log('selectedProduct SKU:', selectedProduct.sku);
+
   function getSwatchData(options) {
-    const {swatch_data} = options[0].values[0];
-    return swatch_data;
+    console.log('typename', options[0].values[0].swatch_data.__typename);
+    // return swatch_data;
   }
 
-  const {__typename} = getSwatchData(options);
+  options.forEach((option) => {
+    if (option.values[0].swatch_data.__typename === 'ColorSwatchData') {
+      console.log('ColorSwatchData');
+    } else if (option.values[0].swatch_data.__typename === 'TextSwatchData') {
+      console.log('TextSwatchData');
+    } else {
+      console.log('no swatch data');
+    }
+  });
+
+  getSwatchData(options);
+
+  return;
 
   return (
     <div className="mt-4">

@@ -43,6 +43,7 @@ export default function ProductDetailsQuery(productSku) {
             }
             selected_attribute_options {
               attribute_option {
+                uid
                 label
               }
             }

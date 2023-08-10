@@ -33,7 +33,7 @@ export default function ProductDetails({ productSku }) {
 
   if (!selectedProduct) return <Spinner />;
   const isConfigurableProduct = Boolean(selectedProduct.configurable_options);
-  const hasCustomAttributes = Boolean(selectedProduct.custom_attributes);
+  const hasCustomAttributes = Boolean(selectedProduct.custom_attributes.length);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200">
@@ -51,18 +51,20 @@ export default function ProductDetails({ productSku }) {
             <Images selectedProduct={selectedProduct} />
             <div className="mt-8 lg:col-span-5">
               <form>
-                {isConfigurableProduct && 
+                {isConfigurableProduct && (
                   <Options
                     options={configurableOptions}
                     selectedOption={selectedOption}
                     setSelectedOption={setSelectedOption}
                     selectedProduct={selectedProduct}
                   />
-                }
+                )}
                 <Button sku={selectedProduct.sku} label="Add to cart" />
               </form>
               <Description description={selectedProduct.description} />
-              {hasCustomAttributes && <Attributes attributes={selectedProduct.custom_attributes} />}
+              {hasCustomAttributes && (
+                <Attributes attributes={selectedProduct.custom_attributes} product={selectedProduct} />
+              )}
             </div>
           </div>
         </div>
