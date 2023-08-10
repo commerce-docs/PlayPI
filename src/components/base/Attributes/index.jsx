@@ -18,13 +18,19 @@ export default function Attributes({ attributes, product }) {
 }
 
 function AttributeItem({ attribute }) {
+  // Do not return the attribute if any option has a null label
+  const options = attribute.selected_attribute_options?.attribute_option;
+  if (!options || options.some((option) => option.label === null)) {
+    return null;
+  }
+
   return (
     <li>
       <span className="text-gray-600 font-light">
         {attribute.attribute_metadata.label}
         {': '}
       </span>
-      <AttributeOptions options={attribute.selected_attribute_options.attribute_option} />
+      <AttributeOptions options={options} />
     </li>
   );
 }
