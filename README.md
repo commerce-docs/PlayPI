@@ -1,8 +1,12 @@
 # Commerce API Explorer
 
-With just three GraphQL queries, this simple React app highlights only a small part of Adobe's extensive Commerce API. The three queries focus on fetching product data to drive a simple products page from a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
+With just three GraphQL queries, this simple React app highlights only a small part of Adobe's extensive Commerce API. The three queries focus on fetching product data to drive a simple products page that might exist in a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
 
-This app is built as a just a simple example that shows just a bit of the data you can retrieve from the Commerce API and how you can put it to use with a variety of frontends.
+Make no mistake, this project is not a beacon of best practices. And it's not intended to be. [Other teams at Adobe are working on that](#the-future-of-adobe-commerce-frontend-components). 
+
+The intent of this project is to show you some of the data — product data — you can retrieve from our Commerce API. 
+
+The project features some **GraphQL queries** and how you can use that data in a storefront. Best practices and specifics for building components that use the data are beyond the scope of this project. Again, we have several teams working on that.
 
 ## Project structure
 
@@ -23,7 +27,7 @@ The `DataFetcher.js` uses the `ApolloClient` to fetch data from the Commerce Gra
 
 ## Project components
 
-For simplicity, each query has a corresponding component to display the data returned:
+For the sake of instruction, each query has a corresponding component to display the data returned:
 
 - `ProductCategories.jsx`
 - `ProductList.jsx` 
@@ -42,10 +46,15 @@ Tailwindcss is used for all component styling.
 5. Open another terminal (to keep the proxy-server running)
 6. Run `yarn dev` to launch the product page example.
 
-> NOTE: I still need to get the `ProductDetails` appearing in a modal. Right now it displays at the bottom of the page.
+## Things to finish
 
-## The future of Commerce frontend components
+- Fix color and size configurable options.
+- Display `ProductDetails` in a modal. Currently, the product details appears at the bottom of the page.
+- Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
+- Create a "data-only" view. No product images or text will be displayed. Only the GraphQL fields and the component name that uses them will be rendered on the screen—in boxes at the same locations in the UI. The purpose is to demonstrate how data from the Commerce GraphQL API feeds a frontend — any frontend! 
 
-The components in this project are not meant to be beacons of best-practices. Frontends are hard. And commerce frontends are even harder.
+## The future of Adobe Commerce frontend components
 
-So what should you do? Let me introduce the future of storefront components: Adobe Commerce Dropins and the Elsie SDK needed to build them... Stay tuned!
+If nothing else, this project should demonstrate just how hard it is to create good frontend components! And frontend **commerce components** are even harder, and far more complex.
+
+But someone has to do it. And do it right! That's exactly what we're doing here at Adobe. We currently have several teams working on our next generation of storefront components along with the SDK tools to build them... Stay tuned!

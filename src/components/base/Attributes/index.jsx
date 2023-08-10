@@ -4,7 +4,7 @@ export default function Attributes({ attributes, product }) {
 
   if (!attributes) return null;
 
-  // Creating the SKU attribute with the desired structure
+  // Create a SKU attribute with the required structure
   const skuAttribute = {
     attribute_metadata: {
       label: 'SKU',
