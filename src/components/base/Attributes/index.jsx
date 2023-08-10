@@ -4,11 +4,34 @@ export default function Attributes({ attributes, product }) {
 
   if (!attributes) return null;
 
+  // Creating the SKU attribute with the desired structure
+  const skuAttribute = {
+    attribute_metadata: {
+      label: 'SKU',
+      uid: product.sku,
+      __typename: 'ProductAttributeMetadata',
+    },
+    selected_attribute_options: {
+      attribute_option: [
+        {
+          label: product.sku,
+          uid: product.sku,
+          __typename: 'AttributeOption',
+        },
+      ],
+      __typename: 'SelectedAttributeOption',
+    },
+    __typename: 'CustomAttribute',
+  };
+
+  // Adding the SKU attribute as the first object in the attributes array
+  const updatedAttributes = [skuAttribute, ...attributes];
+
   return (
     <div className="mt-5 border-t border-gray-200 pt-1">
       <div className="prose prose-sm mt-4 text-gray-600">
         <ul>
-          {attributes.map((attribute) => (
+          {updatedAttributes.map((attribute) => (
             <AttributeItem key={attribute.attribute_metadata.uid} attribute={attribute} />
           ))}
         </ul>
