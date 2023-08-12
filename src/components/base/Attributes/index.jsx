@@ -53,7 +53,7 @@ function AttributeItem({ attribute }) {
         {attribute.attribute_metadata.label}
         {': '}
       </span>
-      <AttributeOptions options={options} />
+      <AttributeOptions key={attribute.attribute_metadata.uid} options={options} />
     </li>
   );
 }

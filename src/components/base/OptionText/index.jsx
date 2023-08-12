@@ -1,10 +1,9 @@
 import { RadioGroup } from '@headlessui/react';
 import classNames from 'classnames';
-import {Fragment} from "react";
 
-export default function OptionPicker({ option, selectedOption, setSelectedOption, selectedProduct }) {
+export default function OptionText({ option, selectedOption, setSelectedOption, selectedProduct }) {
   return (
-    <div className="mt-10">
+    <div className="mt-6">
       <div className="flex items-center justify-between">
         <h2 className="text-sm font-medium text-gray-900">{option.label}</h2>
       </div>
@@ -13,7 +12,7 @@ export default function OptionPicker({ option, selectedOption, setSelectedOption
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
           {option.values.map((value) => (
             <RadioGroup.Option
-              key={value.label}
+              key={value.uid}
               value={value.swatch_data.value}
               className={({ active, checked }) =>
                 classNames(
@@ -29,7 +28,7 @@ export default function OptionPicker({ option, selectedOption, setSelectedOption
               }
               disabled={selectedProduct.stock_status !== 'IN_STOCK'}
             >
-              <RadioGroup.Label as="span">{option.label}</RadioGroup.Label>
+              <RadioGroup.Label as="span">{value.label}</RadioGroup.Label>
             </RadioGroup.Option>
           ))}
         </div>

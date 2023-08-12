@@ -49,7 +49,7 @@ export default function ProductDetails({ productSku }) {
               </div>
             </div>
             <Images selectedProduct={selectedProduct} />
-            <div className="mt-8 lg:col-span-5">
+            <div className="mt-4 lg:col-span-5">
               <form>
                 {isConfigurableProduct && (
                   <Options

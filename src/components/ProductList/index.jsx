@@ -15,13 +15,13 @@ const ProductList = ({ categoryUid, onProductSelect }) => {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 sm:py-6 lg:max-w-7xl lg:px-8">
-        <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
           {products.map(({ uid, sku, name, stock_status, media_gallery, price_range }) => (
             <button
               key={uid}
               onClick={() => onProductSelect(sku)}
-              className="group relative flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+              className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white"
             >
               <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
                 <img

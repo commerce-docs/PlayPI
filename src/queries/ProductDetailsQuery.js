@@ -4,21 +4,16 @@ export default function ProductDetailsQuery(productSku) {
   return gql`
     query {
       products(filter: { sku: { eq: "${productSku}" } }) {
-        total_count
         items {
-          uid
-          sku
           name
-          categories {
-            name
-          }
+          stock_status
           price_range {
             maximum_price {
               final_price {
                 value
                 currency
               }
-            }        
+            }
             minimum_price {
               final_price {
                 value
@@ -30,18 +25,94 @@ export default function ProductDetailsQuery(productSku) {
             html
           }
           ... on ConfigurableProduct {
-            stock_status
-            configurable_options {
-              uid
-              label
-              values {
+              variants {
+                product {
+                  uid
+                  sku
+                  stock_status
+                  media_gallery {
+                    label
+                    position
+                    url
+                  }
+                }
+              }
+              configurable_options {
+                uid
                 label
-                swatch_data {
-                  value
+                values {
+                  uid
+                  label
+                  swatch_data {
+                    __typename
+                    value
+                  }
+                }
+              }
+            }
+
+          ... on BundleProduct {
+            items {
+              sku
+              title
+              options {
+                product {
+                  sku
+                  price_range {
+                    minimum_price {
+                      final_price {
+                        value
+                        currency
+                      }
+                    }
+                    maximum_price {
+                      final_price {
+                        value
+                        currency
+                      }
+                    }
+                  }
                 }
               }
             }
           }
+
+          ... on GroupedProduct {
+            items {
+              product {
+                sku
+                price_range {
+                  minimum_price {
+                    final_price {
+                      value
+                      currency
+                    }
+                  }
+                  maximum_price {
+                    final_price {
+                      value
+                      currency
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          ... on DownloadableProduct {
+            links_title
+            downloadable_product_samples {
+              title
+              sample_url
+              sort_order
+            }
+            downloadable_product_links {
+              title
+              sample_url
+              sort_order
+            }
+          }
+          sku
           custom_attributes {
             attribute_metadata {
               uid
