@@ -1,10 +1,12 @@
+export * from 'Attributes';
+export * from 'Breadcrumbs';
 export * from 'Button';
-export * from 'ColorPicker';
 export * from 'Description';
+export * from 'Heading';
 export * from 'Images';
-export * from 'Modal';
-export * from 'OptionPicker';
 export * from 'Options';
+export * from 'OptionColor';
+export * from 'OptionText';
+export * from 'Modal';
 export * from 'Price';
 export * from 'Spinner';
-e

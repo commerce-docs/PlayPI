@@ -6,10 +6,7 @@
     "strings": true
   },
   "editor.formatOnSave": true,
-  "prettier.bracketSameLine": false,
-  "prettier.configPath": "",
-  "prettier.jsxSingleQuote": true,
-  "prettier.printWidth": 180,
-  "prettier.singleQuote": false,
-  "json.format.keepLines": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "prettier.configPath": "./.prettierrc.json"
 }

@@ -1,7 +1,12 @@
-import OptionColor from '../OptionColor';
-import OptionText from '../OptionText';
+import OptionColor from '@/components/base/OptionColor';
+import OptionText from '@/components/base/OptionText';
 
-export default function Options({ options, selectedOption, setSelectedOption, selectedProduct }) {
+export default function Options({
+  options,
+  selectedOption,
+  setSelectedOption,
+  selectedProduct,
+}) {
   if (!options) return null;
 
   return (
@@ -16,7 +21,9 @@ export default function Options({ options, selectedOption, setSelectedOption, se
               setSelectedOption={setSelectedOption}
             />
           );
-        } else if (option.values[0].swatch_data.__typename === 'TextSwatchData') {
+        } else if (
+          option.values[0].swatch_data.__typename === 'TextSwatchData'
+        ) {
           return (
             <OptionText
               key={option.uid}

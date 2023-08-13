@@ -1,0 +1,9 @@
+body {
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body.modal-open {
+  overflow: hidden;
+}

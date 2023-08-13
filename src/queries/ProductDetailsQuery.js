@@ -5,6 +5,10 @@ export default function ProductDetailsQuery(productSku) {
     query {
       products(filter: { sku: { eq: "${productSku}" } }) {
         items {
+          categories {
+            uid
+            name
+          }
           name
           stock_status
           price_range {

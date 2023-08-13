@@ -1,16 +1,39 @@
 {
-  "printWidth": 110,
+  "printWidth": 80,
   "trailingComma": "all",
   "tabWidth": 2,
+  "jsxSingleQuote": true,
   "useTabs": false,
   "semi": true,
   "singleQuote": true,
   "bracketSameLine": false,
+  "embeddedLanguageFormatting": "auto",
+  "json.format.keepLines": false,
+  "documentSelectors": ["**/*.{ts,js,tsx,jsx,json}"],
+  "enableDebugLogs": true,
+  "htmlWhitespaceSensitivity": "strict",
+  "formatOnSave": true,
+  "formatOnPaste": true,
+  "formatOnType": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSaveTimeout": 5000,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.tslint": true,
+    "source.organizeImports": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+
   "overrides": [
     {
-      "files": "*.md",
+      "files": ["*.json"],
       "options": {
-        "tabWidth": 2
+        "printWidth": 200
       }
     }
   ]

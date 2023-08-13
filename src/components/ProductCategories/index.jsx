@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react';
-import Spinner from '../base/Spinner';
+import { useState, useEffect, Fragment } from 'react';
+import Spinner from '@/components/base/Spinner';
 import classNames from 'classnames';
 
 import { useQuery } from '@apollo/client';
-import ProductCategoriesQuery from '../../queries/ProductCategoriesQuery';
+import ProductCategoriesQuery from '@/queries/ProductCategoriesQuery';
+import noImage from '@/assets/no-image.jpg';
 
-const ProductCategories = ({ onCategorySelect }) => {
+const ProductCategories = ({ selectedCategory, onCategorySelect }) => {
   // Query for categories based on the store id
   const { data } = useQuery(ProductCategoriesQuery(2));
-
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('MTg=');
 
   useEffect(() => {
     if (data?.categories?.items) {
@@ -22,29 +21,27 @@ const ProductCategories = ({ onCategorySelect }) => {
     return <Spinner />;
   }
 
-  const handleCategorySelect = (categoryUid) => {
-    setSelectedCategory(categoryUid);
-    onCategorySelect(categoryUid);
-  };
-
   const setCategory = (categoryName) => {
-    const categoryUid = categories.find(({ name }) => name === categoryName)?.uid;
-    if (categoryUid) handleCategorySelect(categoryUid);
+    const categoryUid = categories.find(
+      ({ name }) => name === categoryName,
+    )?.uid;
+    if (categoryUid) onCategorySelect(categoryUid);
   };
 
-  const selectedCategoryName = categories.find(({ uid }) => uid === selectedCategory)?.name || '';
+  const selectedCategoryName =
+    categories.find(({ uid }) => uid === selectedCategory)?.name || '';
 
   return (
-    <div className="m-6">
-      <div className="sm:hidden -mb-6">
-        <label htmlFor="categories" className="sr-only">
-          Select a tab
+    <div className='mt-6 -mb-6'>
+      <div className='sm:hidden -mb-6'>
+        <label htmlFor='categories' className='sr-only'>
+          Select a product category
         </label>
         <select
           onChange={(e) => setCategory(e.target.value)}
-          id="categories"
-          name="categories"
-          className="block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+          id='categories'
+          name='categories'
+          className='block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
           value={selectedCategoryName}
         >
           {categories.map(({ name, uid }) => (
@@ -52,21 +49,48 @@ const ProductCategories = ({ onCategorySelect }) => {
           ))}
         </select>
       </div>
-      <div className="hidden sm:block">
-        <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8" aria-label="Categories">
-            {categories.map(({ name, uid }) => (
+      <div className='hidden sm:block'>
+        <div>
+          <nav
+            className='flex justify-evenly border-b-2 border-gray-500'
+            aria-label='Categories'
+          >
+            {categories.map((category) => (
               <button
-                key={uid}
-                onClick={() => handleCategorySelect(uid)}
+                key={category.uid}
+                onClick={() => onCategorySelect(category.uid)}
                 className={classNames(
-                  uid === selectedCategory
-                    ? 'border-indigo-500 text-indigo-600'
+                  category.uid === selectedCategory
+                    ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                  'whitespace-nowrap border-b-2 py-4 px-1 text-sm font-medium',
+                  'border-b-2 mx-2 pb-2 text-sm font-medium w-auto text-center',
                 )}
               >
-                {name}
+                {category.image ? (
+                  <div className='flex-col'>
+                    <img
+                      className='rounded-md max-w-full mb-2'
+                      src={category.image}
+                      alt={category.name}
+                    />
+                    <span>{category.name}</span>
+                  </div>
+                ) : (
+                  <div className='flex-col'>
+                    <img
+                      className='rounded-l max-w-full mb-2'
+                      src={noImage}
+                      alt={'No Image Available'}
+                    />
+                    <span>
+                      {category.name === 'Shop The Look'
+                        ? 'Featured'
+                        : category.name === 'New Products'
+                        ? 'New'
+                        : category.name}
+                    </span>
+                  </div>
+                )}
               </button>
             ))}
           </nav>
