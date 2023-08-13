@@ -48,9 +48,9 @@ Tailwindcss is used for all component styling.
 
 ## Things to finish
 
-- Fix color and size configurable options.
-- Display `ProductDetails` in a modal. Currently, the product details appears at the bottom of the page.
-- Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
+- **Done**. ~~Fix color and size configurable options.~~
+- **Done**. ~~Display `ProductDetails` in a modal. Currently, the product details appears at the bottom of the page.~~
+- *In-Progress*. Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
 - Create a "data-only" view. No product images or text will be displayed. Only the GraphQL fields and the component name that uses them will be rendered on the screen—in boxes at the same locations in the UI. The purpose is to demonstrate how data from the Commerce GraphQL API feeds a frontend — any frontend! 
 
 ## The future of Adobe Commerce frontend components
