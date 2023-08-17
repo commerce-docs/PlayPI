@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchProducts } from '@/queries/productDataFetchers';
-import { fetchCategories } from '@/queries/productDataFetchers';
-import { fetchDetails } from '@/queries/productDataFetchers';
+import { fetchCategories, fetchProducts, fetchDetails } from '@/queries/fetchers';
 
 export default function useDataStore() {
   const [dataStore, setDataStore] = useState({
@@ -11,63 +9,52 @@ export default function useDataStore() {
     parentId: 2, // Main product categories
     selectedCategoryId: null,
     selectedProductSku: null,
-    modalIsOpen: false,
-    productDetailsLoaded: false,
   });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchCategories().then((categoriesResult) => {
-      setDataStore((prevData) => ({
-        ...prevData,
-        categories: categoriesResult.items,
-      }));
-      const selectedCategoryId = categoriesResult.items[0].uid;
-      updateSelectedCategoryID(selectedCategoryId);
+    const fetchData = async () => {
+      try {
+        const categoriesResult = await fetchCategories();
+        const selectedCategoryId = categoriesResult.items[0].uid;
 
-      fetchProducts(selectedCategoryId).then((productsResult) => {
+        const productsResult = await fetchProducts(selectedCategoryId);
+        const selectedProductSku = productsResult.items[0].sku;
+
+        const productDetailsResult = await fetchDetails(selectedProductSku);
+
         setDataStore((prevData) => ({
           ...prevData,
+          categories: categoriesResult.items,
           products: productsResult.items,
+          details: productDetailsResult,
+          selectedCategoryId,
+          selectedProductSku,
         }));
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error as needed, e.g., show an error message to the user
+      }
+    };
 
-        const selectedProductSku = productsResult.items[0].sku;
-        updateSelectedProductSku(selectedProductSku);
-
-        fetchDetails(selectedProductSku).then((productDetailsResult) => {
-          setDataStore((prevData) => ({
-            ...prevData,
-            details: productDetailsResult,
-          }));
-          setIsLoading(false);
-        });
-      });
-    }, []);
-  });
-
-  const updateSelectedCategoryID = (selectedCategoryId) => {
-    setDataStore((prevData) => ({
-      ...prevData,
-      selectedCategoryId: selectedCategoryId,
-    }));
-  };
-
-  const updateSelectedProductSku = (selectedProductSku) => {
-    setDataStore((prevData) => ({
-      ...prevData,
-      selectedProductSku: selectedProductSku,
-    }));
-  };
-
-  const getProductBySku = (sku) => {
-    return dataStore.products.find((product) => product.sku === sku);
-  };
+    fetchData();
+  }, []); // Dependency array remains empty as no external dependencies
 
   return {
     dataStore,
     isLoading,
-    updateSelectedCategoryID,
-    updateSelectedProductSku,
-    getProductBySku,
+    updateSelectedCategoryID: (selectedCategoryId) => {
+      setDataStore((prevData) => ({
+        ...prevData,
+        selectedCategoryId: selectedCategoryId,
+      }));
+    },
+    updateSelectedProductSku: (selectedProductSku) => {
+      setDataStore((prevData) => ({
+        ...prevData,
+        selectedProductSku: selectedProductSku,
+      }));
+    },
   };
 }

@@ -1,13 +1,9 @@
-import { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import ProductCategories from '@/components/ProductCategories';
 import ProductList from '@/components/ProductList';
 import ProductDetails from '@/components/ProductDetails';
 import Modal from 'react-modal';
 import './index.css';
-
-import { ApolloProvider } from '@apollo/client';
-import GraphqlClient from './queries/GraphqlClient';
-import useDataStore from '@/hooks/useDataStore';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -32,53 +28,50 @@ const modalStyles = {
 };
 
 export default function App() {
-  const {
-    dataStore: { selectedProductSku, modalIsOpen, productDetailsLoaded },
-    handleCloseModal,
-    handleAfterOpenModal,
-    handleBeforeCloseModal,
-  } = useDataStore();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalChildLoaded, setModalChildLoaded] = useState(false);
+  // const detailsRef = useRef(null);
 
-  useEffect(() => {
-    if (productDetailsLoaded) {
-      setModalIsOpen(true);
-    }
-  }, [productDetailsLoaded]);
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalChildLoaded(false), setModalIsOpen(false);
+  };
+
+  const handleModalChildLoaded = () => {
+    setModalChildLoaded(true);
+  };
+
+  const handleAfterOpenModal = () => {
+    document.body.classList.add('modal-open');
+  };
+
+  const handleBeforeCloseModal = () => {
+    document.body.classList.remove('modal-open');
+  };
 
   return (
-    <ApolloProvider client={GraphqlClient}>
-      <div className='container m-auto'>
-        <ProductCategories />
-        <ProductList />
-        <div style={{ display: modalIsOpen ? 'none' : 'block' }}>
-          <ProductDetails
-            productSku={selectedProductSku}
-            onRequestClose={handleCloseModal}
-            productDetailsLoaded={productDetailsLoaded}
-            onProductDetailsLoaded={() => setProductDetailsLoaded(true)}
-          />
-        </div>
-        <Modal
-          closeTimeoutMS={300}
-          openTimeoutMS={1000}
-          isOpen={modalIsOpen && productDetailsLoaded}
-          shouldCloseOnEsc={true}
-          shouldCloseOnOverlayClick={true}
-          onRequestClose={handleCloseModal}
-          onAfterOpen={handleAfterOpenModal}
-          onBeforeClose={handleBeforeCloseModal}
-          style={modalStyles}
-        >
-          {productDetailsLoaded && (
-            <ProductDetails
-              productSku={selectedProductSku}
-              onRequestClose={handleCloseModal}
-              // productDetailsLoaded={productDetailsLoaded}
-              onProductDetailsLoaded={() => setProductDetailsLoaded(true)}
-            />
-          )}
-        </Modal>
-      </div>
-    </ApolloProvider>
+    <div className='container m-auto'>
+      <ProductCategories />
+      <ProductList setModalToOpen={handleOpenModal} />
+      {/* <div style={{ display: modalIsOpen ? 'none' : 'block' }}>
+        <ProductDetails onLoaded={handleModalChildLoaded} onRequestClose={handleCloseModal} />
+      </div> */}
+      <Modal
+        closeTimeoutMS={300}
+        openTimeoutMS={1000}
+        isOpen={modalIsOpen}
+        shouldCloseOnEsc={true}
+        shouldCloseOnOverlayClick={true}
+        onRequestClose={handleCloseModal}
+        onAfterOpen={handleAfterOpenModal}
+        onBeforeClose={handleBeforeCloseModal}
+        style={modalStyles}
+      >
+        <ProductDetails onRequestClose={handleCloseModal} />
+      </Modal>
+    </div>
   );
 }

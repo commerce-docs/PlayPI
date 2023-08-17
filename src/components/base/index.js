@@ -4,8 +4,6 @@ export * from 'Button';
 export * from 'Description';
 export * from 'Images';
 export * from 'Options';
-export * from 'OptionColor';
-export * from 'OptionText';
 export * from 'Modal';
 export * from 'Price';
 export * from 'Spinner';

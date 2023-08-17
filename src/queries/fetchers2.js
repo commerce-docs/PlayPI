@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
-import CategoriesQuery from './ProductCategoriesQuery';
-import ProductsQuery from './ProductsQuery';
-import ProductDetailsQuery from './ProductDetailsQuery';
+import CategoriesQuery from './older/ProductCategoriesQuery_older';
+import ProductsQuery from './older/ProductsQuery_older';
+import ProductDetailsQuery from './older/ProductDetailsQuery_older';
 
 const fetchCategories = () => {
   const { loading, error, data } = useQuery(CategoriesQuery('2'));

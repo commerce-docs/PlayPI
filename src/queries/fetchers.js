@@ -1,6 +1,6 @@
-import { CATEGORIES_QUERY } from '@/queries/ProductCategoriesQuery2';
-import { PRODUCTS_QUERY } from '@/queries/ProductsQuery2';
-import { PRODUCT_DETAILS_QUERY } from '@/queries/ProductDetailsQuery2';
+import { CATEGORIES_QUERY } from '@/queries/ProductCategoriesQuery';
+import { PRODUCTS_QUERY } from '@/queries/ProductsQuery';
+import { PRODUCT_DETAILS_QUERY } from '@/queries/ProductDetailsQuery';
 import { endpoint } from '@/queries/endpoint';
 
 const fetchCategories = async () => {
