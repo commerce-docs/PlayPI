@@ -1,103 +1,115 @@
-import { useState, useEffect, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Spinner from '@/components/base/Spinner';
 import classNames from 'classnames';
-
-import { useQuery } from '@apollo/client';
-import ProductCategoriesQuery from '@/queries/ProductCategoriesQuery';
 import noImage from '@/assets/no-image.jpg';
+import useDataStore from '@/hooks/useDataStore';
 
-const ProductCategories = ({ selectedCategory, onCategorySelect }) => {
-  // Query for categories based on the store id
-  const { data } = useQuery(ProductCategoriesQuery(2));
-  const [categories, setCategories] = useState([]);
+const ProductCategories = () => {
+  const {
+    dataStore: { categories, selectedCategoryId },
+    isLoading,
+    updateSelectedCategoryID,
+  } = useDataStore();
 
-  useEffect(() => {
-    if (data?.categories?.items) {
-      setCategories(data.categories.items);
-    }
-  }, [data]);
-
-  if (!categories.length) {
-    return <Spinner />;
-  }
-
-  const setCategory = (categoryName) => {
-    const categoryUid = categories.find(
-      ({ name }) => name === categoryName,
-    )?.uid;
-    if (categoryUid) onCategorySelect(categoryUid);
-  };
-
-  const selectedCategoryName =
-    categories.find(({ uid }) => uid === selectedCategory)?.name || '';
+  if (isLoading) return <Spinner />;
 
   return (
-    <div className='mt-6 -mb-6'>
-      <div className='sm:hidden -mb-6'>
-        <label htmlFor='categories' className='sr-only'>
-          Select a product category
-        </label>
-        <select
-          onChange={(e) => setCategory(e.target.value)}
-          id='categories'
-          name='categories'
-          className='block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
-          value={selectedCategoryName}
-        >
-          {categories.map(({ name, uid }) => (
-            <option key={uid}>{name}</option>
-          ))}
-        </select>
-      </div>
-      <div className='hidden sm:block'>
-        <div>
-          <nav
-            className='flex justify-evenly border-b-2 border-gray-500'
-            aria-label='Categories'
-          >
-            {categories.map((category) => (
-              <button
-                key={category.uid}
-                onClick={() => onCategorySelect(category.uid)}
-                className={classNames(
-                  category.uid === selectedCategory
-                    ? 'border-blue-500 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                  'border-b-2 mx-2 pb-2 text-sm font-medium w-auto text-center',
-                )}
-              >
-                {category.image ? (
-                  <div className='flex-col'>
-                    <img
-                      className='rounded-md max-w-full mb-2'
-                      src={category.image}
-                      alt={category.name}
-                    />
-                    <span>{category.name}</span>
-                  </div>
-                ) : (
-                  <div className='flex-col'>
-                    <img
-                      className='rounded-l max-w-full mb-2'
-                      src={noImage}
-                      alt={'No Image Available'}
-                    />
-                    <span>
-                      {category.name === 'Shop The Look'
-                        ? 'Featured'
-                        : category.name === 'New Products'
-                        ? 'New'
-                        : category.name}
-                    </span>
-                  </div>
-                )}
-              </button>
-            ))}
-          </nav>
-        </div>
-      </div>
+    <div className='mt-6 -mb-6 px-4'>
+      <DropdownCategories
+        categories={categories}
+        selectedCategoryID={selectedCategoryId}
+        updateSelectedCategoryID={updateSelectedCategoryID}
+      />
+      <BlockCategories
+        categories={categories}
+        selectedCategoryID={selectedCategoryId}
+        updateSelectedCategoryID={updateSelectedCategoryID}
+      />
     </div>
   );
 };
 
 export default ProductCategories;
+
+function DropdownCategories({ categories, selectedCategoryID, updateSelectedCategoryID }) {
+  return (
+    <div className='sm:hidden -mb-6'>
+      <label htmlFor='categories' className='sr-only'>
+        Select a product category
+      </label>
+      <select
+        onChange={(e) => updateSelectedCategoryID(e.target.value)}
+        id='categories'
+        name='categories'
+        className='block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
+        value={selectedCategoryID}
+      >
+        {categories.map(({ name, uid }) => (
+          <option key={uid} value={uid}>
+            {name}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
+
+function BlockCategories({ categories, selectedCategoryID, updateSelectedCategoryID }) {
+  return (
+    <div className='hidden sm:block'>
+      <nav className='flex justify-evenly border-b border-gray-200' aria-label='Categories'>
+        {categories.map((category) => (
+          <CategoryButton
+            key={category.uid}
+            category={category}
+            isSelected={category.uid === selectedCategoryID}
+            onClick={() => updateSelectedCategoryID(category.uid)}
+          />
+        ))}
+      </nav>
+    </div>
+  );
+}
+
+function CategoryButton({ category, isSelected, onClick }) {
+  const displayNameMap = {
+    'Shop The Look': 'Featured',
+    'New Products': 'New',
+  };
+
+  return (
+    <button
+      key={category.uid}
+      onClick={onClick}
+      className={classNames(
+        isSelected
+          ? 'border-blue-500 text-blue-600'
+          : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
+        'border-b-2 mx-2 pb-2 text-sm font-medium w-auto text-center',
+      )}
+    >
+      <div className='flex-col'>
+        <img
+          className='rounded-md max-w-full mb-2'
+          src={category.image || noImage}
+          alt={category.name}
+        />
+        <span>{displayNameMap[category.name] || category.name}</span>
+      </div>
+    </button>
+  );
+}
+
+DropdownCategories.propTypes = {
+  categories: PropTypes.array.isRequired,
+  selectedCategoryID: PropTypes.string.isRequired,
+  updateSelectedCategoryID: PropTypes.func.isRequired,
+};
+
+BlockCategories.propTypes = DropdownCategories.propTypes;
+
+CategoryButton.propTypes = {
+  category: PropTypes.object.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

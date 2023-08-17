@@ -10,10 +10,11 @@ The project features some **GraphQL queries** and how you can use that data in a
 
 ## Project structure
 
-The project contains two main directories:
+The project contains three main directories:
 
-- `src/queries` — for GraphQL queries and data fetching
+- `src/queries` — for GraphQL queries, client, and endpoint
 - `src/components` — for displaying the data
+- `src/hooks` — for custom React hooks to manage state and fetch data
 
 ## Project queries
 
@@ -23,7 +24,7 @@ The `queries` directory contains the GraphQL queries to Venia's Commerce backend
 - `ProductListQuery.js` — Defines the query for fetching the products from the selected category (limited to 12 for simplicity).
 - `ProductDetailsQuery.js` — Defines the query for fetching the details from the selected product.
 
-The `DataFetcher.js` uses the `ApolloClient` to fetch data from the Commerce GraphQL API using Venia's endpoint.
+The `GraphqlClient.js` uses the `ApolloClient` to fetch data from the Commerce GraphQL API using Venia's endpoint.
 
 ## Project components
 

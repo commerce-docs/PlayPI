@@ -1,15 +1,26 @@
 import { RadioGroup } from '@headlessui/react';
 import classNames from 'classnames';
 
-export default function OptionText({ option, selectedOption, setSelectedOption, selectedProduct }) {
+export default function OptionText({
+  option,
+  selectedOption,
+  setSelectedOption,
+  selectedProduct,
+}) {
   return (
-    <div className="mt-6">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-gray-900">{option.label}</h2>
+    <div className='mt-6'>
+      <div className='flex items-center justify-between'>
+        <h2 className='text-sm font-medium text-gray-900'>{option.label}</h2>
       </div>
-      <RadioGroup value={selectedOption} onChange={setSelectedOption} className="mt-2">
-        <RadioGroup.Label className="sr-only">Choose a {option.label}</RadioGroup.Label>
-        <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+      <RadioGroup
+        value={selectedOption}
+        onChange={() => setSelectedOption(selectedOption)}
+        className='mt-2'
+      >
+        <RadioGroup.Label className='sr-only'>
+          Choose a {option.label}
+        </RadioGroup.Label>
+        <div className='grid grid-cols-3 gap-3 sm:grid-cols-6'>
           {option.values.map((value) => (
             <RadioGroup.Option
               key={value.uid}
@@ -28,7 +39,7 @@ export default function OptionText({ option, selectedOption, setSelectedOption, 
               }
               disabled={selectedProduct.stock_status !== 'IN_STOCK'}
             >
-              <RadioGroup.Label as="span">{value.label}</RadioGroup.Label>
+              <RadioGroup.Label as='span'>{value.label}</RadioGroup.Label>
             </RadioGroup.Option>
           ))}
         </div>

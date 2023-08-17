@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+body.modal-open {
+  margin-right: 16px;
+  overflow-y: hidden;
+  transition: transform 350ms ease-in-out;
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  transition: opacity 350ms ease-in-out;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+  transition: opacity 350ms ease-in-out;
+}

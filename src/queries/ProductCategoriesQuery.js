@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
-export default function ProductCategoriesQuery(parentId) {
+export default function CategoriesQuery(parentId) {
   return gql`
     query {
-      categories(filters: { parent_id: { eq: "2" } }, currentPage: 1) {
+      categories(filters: { parent_id: { eq: "${parentId}" } }, currentPage: 1) {
         total_count
         items {
           uid

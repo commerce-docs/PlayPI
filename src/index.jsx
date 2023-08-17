@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import ProductExplorer from './App';
+import App from './App2';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.Profiler id='main'>
-    <ProductExplorer />
-  </React.Profiler>,
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
 );

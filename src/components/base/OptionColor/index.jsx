@@ -1,15 +1,25 @@
 import { RadioGroup } from '@headlessui/react';
 import classNames from 'classnames';
 
-export default function OptionColor({ option, selectedOption, setSelectedOption }) {
+export default function OptionColor({
+  option,
+  selectedOption,
+  setSelectedOption,
+}) {
   return (
-    <div className="mt-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-sm font-medium text-gray-900">{option.label}</h2>
+    <div className='mt-4'>
+      <div className='flex items-center justify-between'>
+        <h2 className='text-sm font-medium text-gray-900'>{option.label}</h2>
       </div>
-      <RadioGroup value={selectedOption} onChange={setSelectedOption} className="mt-2">
-        <RadioGroup.Label className="sr-only">Choose a {option.label}</RadioGroup.Label>
-        <div className="flex items-center space-x-3">
+      <RadioGroup
+        value={selectedOption}
+        onChange={() => setSelectedOption(selectedOption)}
+        className='mt-2'
+      >
+        <RadioGroup.Label className='sr-only'>
+          Choose a {option.label}
+        </RadioGroup.Label>
+        <div className='flex items-center space-x-3'>
           {option.values.map((value) => (
             <RadioGroup.Option
               key={value.uid}
@@ -26,11 +36,11 @@ export default function OptionColor({ option, selectedOption, setSelectedOption 
                 )
               }
             >
-              <RadioGroup.Label as="span" className="sr-only" key={value.label}>
+              <RadioGroup.Label as='span' className='sr-only' key={value.label}>
                 {value.label}
               </RadioGroup.Label>
               <span
-                aria-hidden="true"
+                aria-hidden='true'
                 className={classNames(
                   value.swatch_data.value,
                   'h-8 w-8 rounded-full border border-black border-opacity-10',

@@ -3,7 +3,7 @@ import { gql } from '@apollo/client';
 export default function ProductDetailsQuery(productSku) {
   return gql`
     query {
-      products(filter: { sku: { eq: "${productSku}" } }) {
+      products(filter: { sku: { eq: $productSku } }) {
         items {
           categories {
             uid
@@ -29,31 +29,31 @@ export default function ProductDetailsQuery(productSku) {
             html
           }
           ... on ConfigurableProduct {
-              variants {
-                product {
-                  uid
-                  sku
-                  stock_status
-                  media_gallery {
-                    label
-                    position
-                    url
-                  }
-                }
-              }
-              configurable_options {
+            variants {
+              product {
                 uid
-                label
-                values {
-                  uid
+                sku
+                stock_status
+                media_gallery {
                   label
-                  swatch_data {
-                    __typename
-                    value
-                  }
+                  position
+                  url
                 }
               }
             }
+            configurable_options {
+              uid
+              label
+              values {
+                uid
+                label
+                swatch_data {
+                  __typename
+                  value
+                }
+              }
+            }
+          }
 
           ... on BundleProduct {
             items {
