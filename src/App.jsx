@@ -5,8 +5,6 @@ import ProductDetails from '@/components/ProductDetails';
 import Modal from 'react-modal';
 import './index.css';
 
-Modal.setAppElement(document.getElementById('root'));
-
 const modalStyles = {
   overlay: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -26,6 +24,7 @@ const modalStyles = {
     boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)',
   },
 };
+Modal.setAppElement(document.getElementById('root'));
 
 export default function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -70,7 +69,7 @@ export default function App() {
         onBeforeClose={handleBeforeCloseModal}
         style={modalStyles}
       >
-        <ProductDetails onRequestClose={handleCloseModal} />
+        <ProductDetails />
       </Modal>
     </div>
   );

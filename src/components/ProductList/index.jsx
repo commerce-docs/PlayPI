@@ -7,7 +7,7 @@ const ProductList = ({ setModalToOpen }) => {
 
   if (isLoading) return <Spinner />;
 
-  const products = dataStore?.products || [];
+  const products = dataStore.products || [];
 
   return (
     <div className='mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8'>

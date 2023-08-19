@@ -31,7 +31,7 @@ const fetchProducts = async (selectedCategoryId) => {
   });
   const data = await response.json();
 
-  return data.data.products;
+  return data?.data?.products;
 };
 
 const fetchDetails = async (selectedProductSku) => {
@@ -45,9 +45,9 @@ const fetchDetails = async (selectedProductSku) => {
     body: JSON.stringify({ query, variables }),
   });
   const data = await response.json();
-  console.log('🚀 fetchDetails ~ data:', data.data);
 
-  return data.data;
+  console.log('🚀 data?.data?.products?.items[0]:', data?.data?.products?.items[0]);
+  return data?.data?.products?.items[0];
 };
 
 export { fetchCategories, fetchProducts, fetchDetails };

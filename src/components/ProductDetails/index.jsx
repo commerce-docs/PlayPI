@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Spinner from '@/components/base/Spinner';
 import Images from '@/components/base/Images';
 import Button from '@/components/base/Button';
@@ -7,81 +7,75 @@ import Attributes from '@/components/base/Attributes';
 import Price from '@/components/base/Price';
 import Options from '@/components/base/Options';
 import Breadcrumbs from '@/components/base/Breadcrumbs';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import useDataStore from '@/hooks/useDataStore';
 
-export default function ProductDetails({ onRequestClose }) {
-  const {
-    dataStore: { products, selectedProductSku },
-    isLoading,
-  } = useDataStore();
+export default function ProductDetails() {
+  const { dataStore, isLoading } = useDataStore();
 
   if (isLoading) return <Spinner />;
 
-  const selectedProduct = products.find((product) => product.sku === selectedProductSku);
+  const productDetails = dataStore.products;
+  console.log(productDetails);
 
-  const [configurableOptions, setConfigurableOptions] = useState(null);
-  const [selectedOption, setSelectedOption] = useState(null);
+  // let configurableOptions = [];
+  // let customAttributes = [];
+  // let isConfigurableProduct = false;
+  // let hasCustomAttributes = false;
 
-  const isConfigurableProduct = Boolean(selectedProduct?.configurable_options);
-  const hasCustomAttributes = Boolean(selectedProduct?.custom_attributes?.length);
-
-  if (selectedProduct && selectedProduct.configurable_options) {
-    setConfigurableOptions(selectedProduct.configurable_options);
-  }
+  // useEffect(() => {
+  //   if (productDetails) {
+  //     configurableOptions = productDetails.configurable_options;
+  //     customAttributes = productDetails.custom_attributes;
+  //     isConfigurableProduct = Boolean(configurableOptions?.length > 0);
+  //     hasCustomAttributes = Boolean(customAttributes?.length > 0);
+  //     console.log(productDetails.name);
+  //   }
+  // }, [productDetails]);
 
   return (
     <div>
-      <div className='bg-white'>
+      Won't work
+      {/* <div className='bg-white'>
         <div className='pb-16 pt-6 sm:pb-24'>
           <div className='flex justify-start'>
-            <Breadcrumbs product={selectedProduct} />
-            <button
-              type='button'
-              className='absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8'
-              aria-label='Close panel'
-              onClick={() => onRequestClose()}
-            >
-              <span className='sr-only'>Close</span>
-              <XMarkIcon className='h-6 w-6' aria-hidden='true' />
-            </button>
+            <Breadcrumbs product={productDetails} />
           </div>
           <div className='mx-auto mt-8 max-w-md px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
             <div className='lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8'>
               <div className='lg:col-span-5 lg:col-start-8'>
                 <div className='flex justify-between'>
-                  <h1 className='text-xl font-medium text-gray-900'>{selectedProduct.name}</h1>
+                  <h1 className='text-xl font-medium text-gray-900'>{productDetails.name}</h1>
                   <p className='text-xl font-medium text-gray-900'>
-                    <Price product={selectedProduct} />
+                    <Price productDetails={productDetails} />
                   </p>
                 </div>
               </div>
-              <Images selectedProduct={selectedProduct} />
+              <Images productDetails={productDetails} />
               <div className='mt-4 lg:col-span-5'>
                 <form>
                   {isConfigurableProduct && (
                     <Options
-                      options={configurableOptions}
+                      configurableOptions={configurableOptions}
                       selectedOption={selectedOption}
                       setSelectedOption={setSelectedOption}
-                      selectedProduct={selectedProduct}
+                      productDetails={productDetails}
                     />
                   )}
-                  <Button sku={selectedProduct.sku} label='Add to cart' />
+                  <Button sku={productDetails.sku} label='Add to cart' />
                 </form>
-                <Description description={selectedProduct.description} />
+                <Description description={productDetails.description} />
                 {hasCustomAttributes && (
                   <Attributes
-                    attributes={selectedProduct.custom_attributes}
-                    product={selectedProduct}
+                    attributes={productDetails.custom_attributes}
+                    productDetails={productDetails}
                   />
                 )}
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

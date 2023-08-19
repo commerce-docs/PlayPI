@@ -5,7 +5,7 @@ export default function useDataStore() {
   const [dataStore, setDataStore] = useState({
     categories: null,
     products: null,
-    details: null,
+    productDetails: null,
     parentId: 2, // Main product categories
     selectedCategoryId: null,
     selectedProductSku: null,
@@ -16,30 +16,44 @@ export default function useDataStore() {
     const fetchData = async () => {
       try {
         const categoriesResult = await fetchCategories();
-        const selectedCategoryId = categoriesResult.items[0].uid;
+        const selectedCategoryId = dataStore.selectedCategoryId || categoriesResult.items[0].uid;
 
         const productsResult = await fetchProducts(selectedCategoryId);
-        const selectedProductSku = productsResult.items[0].sku;
-
-        const productDetailsResult = await fetchDetails(selectedProductSku);
+        // const selectedProductSku = dataStore.selectedProductSku || productsResult.items[0].sku;
 
         setDataStore((prevData) => ({
           ...prevData,
           categories: categoriesResult.items,
           products: productsResult.items,
-          details: productDetailsResult,
-          selectedCategoryId,
-          selectedProductSku,
+          selectedCategoryId: selectedCategoryId,
+          // selectedProductSku: selectedProductSku,
         }));
+
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error as needed, e.g., show an error message to the user
       }
     };
-
     fetchData();
-  }, []); // Dependency array remains empty as no external dependencies
+  }, [dataStore.selectedCategoryId]);
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        if (dataStore.selectedProductSku) {
+          const productDetailsResult = await fetchDetails(dataStore.selectedProductSku);
+
+          setDataStore((prevData) => ({
+            ...prevData,
+            productDetails: productDetailsResult,
+          }));
+        }
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+      }
+    };
+    fetchProductDetails();
+  }, [dataStore.selectedProductSku, dataStore.productDetails]);
 
   return {
     dataStore,

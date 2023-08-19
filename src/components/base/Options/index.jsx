@@ -1,4 +1,4 @@
-export default function Options({ options, selectedOption, setSelectedOption, selectedProduct }) {
+export default function Options({ options, selectedOption, setSelectedOption, productDetails }) {
   if (!options) return null;
 
   return (
@@ -20,7 +20,7 @@ export default function Options({ options, selectedOption, setSelectedOption, se
               option={option}
               selectedOption={selectedOption}
               setSelectedOption={setSelectedOption}
-              selectedProduct={selectedProduct}
+              productDetails={productDetails}
             />
           );
         } else {
@@ -78,7 +78,7 @@ function OptionColor({ option, selectedOption, setSelectedOption }) {
   );
 }
 
-function OptionText({ option, selectedOption, setSelectedOption, selectedProduct }) {
+function OptionText({ option, selectedOption, setSelectedOption, productDetails }) {
   return (
     <div className='mt-6'>
       <div className='flex items-center justify-between'>
@@ -97,7 +97,7 @@ function OptionText({ option, selectedOption, setSelectedOption, selectedProduct
               value={value.swatch_data.value}
               className={({ active, checked }) =>
                 classNames(
-                  selectedProduct.stock_status === 'IN_STOCK'
+                  productDetails.stock_status === 'IN_STOCK'
                     ? 'cursor-pointer focus:outline-none'
                     : 'cursor-not-allowed opacity-25',
                   active ? 'ring-2 ring-blue-500 ring-offset-2' : '',
@@ -107,7 +107,7 @@ function OptionText({ option, selectedOption, setSelectedOption, selectedProduct
                   'flex items-center justify-center rounded-md border py-3 px-3 text-sm font-medium uppercase sm:flex-1',
                 )
               }
-              disabled={selectedProduct.stock_status !== 'IN_STOCK'}
+              disabled={productDetails.stock_status !== 'IN_STOCK'}
             >
               <RadioGroup.Label as='span'>{value.label}</RadioGroup.Label>
             </RadioGroup.Option>

@@ -7,7 +7,16 @@ export const PRODUCT_DETAILS_QUERY = `
           name
         }
         name
+        sku
+        description {
+          html
+        }
         stock_status
+        media_gallery {
+          label
+          position
+          url
+        }
         price_range {
           maximum_price {
             final_price {
@@ -22,8 +31,17 @@ export const PRODUCT_DETAILS_QUERY = `
             }
           }
         }
-        description {
-          html
+        custom_attributes {
+          attribute_metadata {
+            uid
+            label
+          }
+          selected_attribute_options {
+            attribute_option {
+              uid
+              label
+            }
+          }
         }
         ... on ConfigurableProduct {
           variants {
@@ -110,24 +128,6 @@ export const PRODUCT_DETAILS_QUERY = `
             sample_url
             sort_order
           }
-        }
-        sku
-        custom_attributes {
-          attribute_metadata {
-            uid
-            label
-          }
-          selected_attribute_options {
-            attribute_option {
-              uid
-              label
-            }
-          }
-        }
-        media_gallery {
-          label
-          position
-          url
         }
       }
     }
