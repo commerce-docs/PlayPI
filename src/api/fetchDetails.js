@@ -1,6 +1,6 @@
-import { endpoint } from '@/queries/endpoint';
+import { endpoint } from './endpoint';
 
-const PRODUCT_DETAILS = `
+const DETAILS = `
   query ProductDetailsQuery($productSku: String!) {
     products(filter: { sku: { eq: $productSku } }) {
       items {
@@ -136,9 +136,10 @@ const PRODUCT_DETAILS = `
   }
 `;
 
-const fetchDetails = async (selectedProduct) => {
-  const query = PRODUCT_DETAILS;
-  const variables = { sku: selectedProduct };
+const fetchDetails = async (productSku) => {
+  console.log('🚀 productSku:', productSku);
+  const query = DETAILS;
+  const variables = { productSku: productSku };
   const url = endpoint;
 
   const response = await fetch(url, {
@@ -147,7 +148,7 @@ const fetchDetails = async (selectedProduct) => {
     body: JSON.stringify({ query, variables }),
   });
   const data = await response.json();
-
+  console.log('returning data.data.products.items[0]:', data.data.products.items[0]);
   return data.data.products.items[0];
 };
 

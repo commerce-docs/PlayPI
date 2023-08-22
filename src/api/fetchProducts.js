@@ -1,6 +1,6 @@
-import { endpoint } from '@/queries/endpoint';
+import { endpoint } from './endpoint';
 
-const PRODUCT_LIST = `
+const PRODUCTS = `
   query ProductsQuery($selectedCategory: String!) {
     products(filter: { category_uid: { eq: $selectedCategory } }, pageSize: 12) {
       total_count
@@ -33,7 +33,7 @@ const PRODUCT_LIST = `
 `;
 
 const fetchProducts = async (selectedCategory) => {
-  const query = PRODUCT_LIST;
+  const query = PRODUCTS;
   const variables = { selectedCategory: selectedCategory };
   const url = endpoint;
 

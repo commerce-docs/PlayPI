@@ -1,10 +1,10 @@
 import Spinner from '@/components/base/Spinner';
 import classNames from 'classnames';
 import noImage from '@/assets/no-image.jpg';
-import useDataStore from '@/hooks/useDataStore';
+import { useDataStore } from '@/DataProvider';
 
-const ProductCategories = () => {
-  const { dataStore, isLoading, updateSelectedCategory } = useDataStore();
+const Categories = () => {
+  const { dataStore, isLoading, updateCategory } = useDataStore();
 
   if (isLoading) return <Spinner />;
 
@@ -13,24 +13,24 @@ const ProductCategories = () => {
       <DropdownCategories
         categories={dataStore.categories}
         selectedCategory={dataStore.selectedCategory}
-        updateSelectedCategory={updateSelectedCategory}
+        updateCategory={updateCategory}
       />
       <BlockCategories
         categories={dataStore.categories}
         selectedCategory={dataStore.selectedCategory}
-        updateSelectedCategory={updateSelectedCategory}
+        updateCategory={updateCategory}
       />
     </div>
   );
 
-  function DropdownCategories({ categories, selectedCategory, updateSelectedCategory }) {
+  function DropdownCategories({ categories, selectedCategory, updateCategory }) {
     return (
       <div className='sm:hidden -mb-6'>
         <label htmlFor='categories' className='sr-only'>
           Select a product category
         </label>
         <select
-          onChange={(e) => updateSelectedCategory(e.target.value)}
+          onChange={(e) => updateCategory(e.target.value)}
           id='categories'
           name='categories'
           className='block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
@@ -46,7 +46,7 @@ const ProductCategories = () => {
     );
   }
 
-  function BlockCategories({ categories, selectedCategory, updateSelectedCategory }) {
+  function BlockCategories({ categories, selectedCategory, updateCategory }) {
     const displayNameMap = {
       'Shop The Look': 'Featured',
       'New Products': 'New',
@@ -57,7 +57,7 @@ const ProductCategories = () => {
           {categories.map((category) => (
             <button
               key={category.uid}
-              onClick={() => updateSelectedCategory(category.uid)}
+              onClick={() => updateCategory(category.uid)}
               className={classNames(
                 selectedCategory === category.uid
                   ? 'border-blue-500 text-blue-600'
@@ -81,4 +81,4 @@ const ProductCategories = () => {
   }
 };
 
-export default ProductCategories;
+export default Categories;

@@ -6,35 +6,34 @@ Make no mistake, this project is not a beacon of best practices. And it's not in
 
 The intent of this project is to show you some of the data — product data — you can retrieve from our Commerce API. 
 
-The project features some **GraphQL queries** and how you can use that data in a storefront. Best practices and specifics for building components that use the data are beyond the scope of this project. Again, we have several teams working on that.
+The project features some **GraphQL queries** and how you can use the returned data in a storefront. Best practices and specifics for building components that use the data are beyond the scope of this project. Again, we have several teams working on that.
 
 ## Project structure
 
-The project contains three main directories:
+The project contains two main directories:
 
-- `src/queries` — for GraphQL queries, client, and endpoint
+- `src/api` — for GraphQL queries, client, and endpoint
 - `src/components` — for displaying the data
-- `src/hooks` — for custom React hooks to manage state and fetch data
 
-## Project queries
+## Project api
 
-The `queries` directory contains the GraphQL queries to Venia's Commerce backend:
+The `api` directory contains the GraphQL queries to Venia's Commerce backend:
 
-- `ProductCategoriesQuery.js` — Defines the query for fetching the product categories from the Venia store.
-- `ProductListQuery.js` — Defines the query for fetching the products from the selected category (limited to 12 for simplicity).
-- `ProductDetailsQuery.js` — Defines the query for fetching the details from the selected product.
+- `fetchCategories.js` — Defines the CATEGORIES query for fetching the product categories from the Venia store.
+- `fetchProducts.js` — Defines the PRODUCTS query for fetching the selected category's products (limited to 12 for simplicity).
+- `fetchDetails.js` — Defines the DETAILS query for fetching the selected product's details.
 
-The `GraphqlClient.js` uses the `ApolloClient` to fetch data from the Commerce GraphQL API using Venia's endpoint.
+To keep things simple, Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint.
 
 ## Project components
 
-For the sake of instruction, each query has a corresponding component to display the data returned:
+For the sake of simplicity, each query has a corresponding component to display the data returned:
 
 - `ProductCategories.jsx`
 - `ProductList.jsx` 
 - `ProductDetails.jsx`
 
-The `base` directory contains a variety of other components used within the three main components.
+The `base` directory contains a variety of other components used as children within the three main components.
 
 Tailwindcss is used for all component styling.
 
@@ -44,7 +43,7 @@ Tailwindcss is used for all component styling.
 2. Change directories: `cd playpi`
 3. Run `yarn` to install dependencies.
 4. Run `yarn start:server` to start the project's proxy server so you can access Venia's GraphQL endpoint.
-5. Open another terminal (to keep the proxy-server running)
+5. Open another shell (to keep the proxy-server running)
 6. Run `yarn dev` to launch the product page example.
 
 ## Things to finish

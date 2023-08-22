@@ -1,17 +1,14 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import Spinner from '@/components/base/Spinner';
+import { useDataStore } from '@/DataProvider';
 
-export default function Modal(isOpen, onCloseModal, children) {
-  if (!isOpen.isOpen) {
-    return <Spinner />;
-  }
-  console.log(children);
+export default function Modal({ children }) {
+  const { dataStore, openModal } = useDataStore();
 
   return (
-    <Transition.Root show={isOpen.isOpen} as={Fragment}>
-      <Dialog as='div' className='relative z-10' onClose={isOpen.onCloseModal}>
+    <Transition.Root show={dataStore.modalIsOpen} as={Fragment}>
+      <Dialog as='div' className='relative z-10' onClose={() => openModal(false)}>
         <Transition.Child
           as={Fragment}
           enter='ease-out duration-300'
@@ -27,10 +24,7 @@ export default function Modal(isOpen, onCloseModal, children) {
         <div className='fixed inset-0 z-10 overflow-y-auto'>
           <div className='flex min-h-full items-stretch justify-center text-center md:items-center md:px-2 lg:px-4'>
             {/* This element is to trick the browser into centering the modal contents. */}
-            <span
-              className='hidden md:inline-block md:h-screen md:align-middle'
-              aria-hidden='true'
-            >
+            <span className='hidden md:inline-block md:h-screen md:align-middle' aria-hidden='true'>
               &#8203;
             </span>
             <Transition.Child
@@ -47,12 +41,12 @@ export default function Modal(isOpen, onCloseModal, children) {
                   <button
                     type='button'
                     className='absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8'
-                    onClick={isOpen.onCloseModal}
+                    onClick={() => openModal(false)}
                   >
                     <span className='sr-only'>Close</span>
                     <XMarkIcon className='h-6 w-6' aria-hidden='true' />
                   </button>
-                  {isOpen.children}
+                  {children}
                 </div>
               </Dialog.Panel>
             </Transition.Child>

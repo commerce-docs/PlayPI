@@ -1,39 +1,30 @@
-import useDataStore from '@/hooks/useDataStore';
-import Spinner from '@/components/base/Spinner';
 import Price from '@/components/base/Price';
+import Spinner from '@/components/base/Spinner';
+import { useDataStore } from '@/DataProvider';
 
-const ProductList = ({ setModalToOpen }) => {
-  const { dataStore, isLoading, updateSelectedProduct } = useDataStore();
+const Products = () => {
+  const { dataStore, isLoading, updateProduct } = useDataStore();
 
   if (isLoading) return <Spinner />;
-
-  const selectedCategoryProducts = dataStore.products;
-  console.log('🚀selectedCategoryProducts:', selectedCategoryProducts);
 
   return (
     <div className='mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8'>
       <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
         {dataStore.products.map((product) => (
-          <ProductTile
-            key={product.uid}
-            product={product}
-            onSelect={updateSelectedProduct}
-            openModal={setModalToOpen}
-          />
+          <ProductTile key={product.uid} product={product} updateProduct={updateProduct} />
         ))}
       </div>
     </div>
   );
 };
 
-export default ProductList;
+export default Products;
 
-function ProductTile({ product, onSelect, openModal }) {
+function ProductTile({ product, updateProduct }) {
   return (
     <button
       onClick={() => {
-        onSelect(product.sku);
-        openModal();
+        updateProduct(product.sku);
       }}
       className='group relative overflow-hidden rounded-lg border border-gray-...'
       aria-label={`Select ${product.name}`}

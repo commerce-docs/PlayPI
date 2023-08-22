@@ -1,6 +1,6 @@
-import { endpoint } from '@/queries/endpoint';
+import { endpoint } from './endpoint';
 
-const PRODUCT_CATEGORIES = `
+const CATEGORIES = `
   query ProductCategories($categoryLevel: String!) {
     categories(filters: { parent_id: { eq: $categoryLevel } }, currentPage: 1) {
       total_count
@@ -22,7 +22,7 @@ const PRODUCT_CATEGORIES = `
 `;
 
 const fetchCategories = async (categoryLevel = '2') => {
-  const query = PRODUCT_CATEGORIES;
+  const query = CATEGORIES;
   const variables = { categoryLevel: categoryLevel };
   const url = endpoint;
 
