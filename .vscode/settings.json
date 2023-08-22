@@ -8,5 +8,8 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  "prettier.configPath": "./.prettierrc.json"
+  "prettier.configPath": "./.prettierrc.json",
+  "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "markdown.preview.fontSize": 13
 }
