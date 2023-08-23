@@ -6,20 +6,18 @@ import Attributes from '@/components/base/Attributes';
 import Price from '@/components/base/Price';
 import Options from '@/components/base/Options';
 import Breadcrumbs from '@/components/base/Breadcrumbs';
-import { useDataStore } from '@/DataProvider';
+import { useProductsProvider } from '@/ProductsProvider';
 
 export default function Details() {
   const {
-    dataStore: {
-      productDetails,
-      isConfigurableProduct,
-      hasCustomAttributes,
-      configurableOptions,
-      handleSelectedOption,
-      selectedOption,
-    },
+    productDetails,
+    isConfigurableProduct,
+    hasCustomAttributes,
+    options,
+    updateOption,
+    selectedOption,
     isLoading,
-  } = useDataStore();
+  } = useProductsProvider();
 
   if (isLoading) return <Spinner />;
 
@@ -27,11 +25,11 @@ export default function Details() {
     <div>
       {productDetails && (
         <div className='bg-white'>
-          <div className='pb-16 pt-6 sm:pb-24'>
+          <div className='w-full pb-16 pt-6 md:pt-0 md:pb-6 sm:pb-24'>
             <div className='flex justify-start'>
               <Breadcrumbs product={productDetails} />
             </div>
-            <div className='mx-auto mt-8 max-w-md px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+            <div className='mx-auto mt-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
               <div className='lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8'>
                 <div className='lg:col-span-5 lg:col-start-8'>
                   <div className='flex justify-between'>
@@ -46,9 +44,9 @@ export default function Details() {
                   <form>
                     {isConfigurableProduct && (
                       <Options
-                        configurableOptions={configurableOptions}
+                        options={options}
                         selectedOption={selectedOption}
-                        setSelectedOption={handleSelectedOption}
+                        updateOption={updateOption}
                         productDetails={productDetails}
                       />
                     )}

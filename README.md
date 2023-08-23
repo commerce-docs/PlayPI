@@ -1,12 +1,10 @@
-# Commerce API Explorer
+# Commerce Products API Explorer
 
-With just three GraphQL queries, this simple React app highlights only a small part of Adobe's extensive Commerce API. The three queries focus on fetching product data to drive a simple products page that might exist in a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
+With just three products-based GraphQL queries, this simple React app highlights only a part of Adobe's extensive Commerce API. The three queries in the app focus on fetching product data to drive a simple products page that might exist in a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
 
-Make no mistake, this project is not a beacon of best practices. And it's not intended to be. [Other teams at Adobe are working on that](#the-future-of-adobe-commerce-frontend-components). 
+This example app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components). 
 
-The intent of this project is to show you some of the data — product data — you can retrieve from our Commerce API. 
-
-The project features some **GraphQL queries** and how you can use the returned data in a storefront. Best practices and specifics for building components that use the data are beyond the scope of this project. Again, we have several teams working on that.
+This app is only meant to demonstrate how you can retrieve data from the Commerce GraphQL API — in this case, product data — and display it in a simple React frontend. Other frontend frameworks can also be used. 
 
 ## Project structure
 
@@ -55,6 +53,6 @@ Tailwindcss is used for all component styling.
 
 ## The future of Adobe Commerce frontend components
 
-If nothing else, this project should demonstrate just how hard it is to create good frontend components! And frontend **commerce components** are even harder, and far more complex.
+If nothing else, this project should show just how hard it is to create good frontend e-commerce components and how many are involved in even the simplest of single-page apps. 
 
-But someone has to do it. And do it right! That's exactly what we're doing here at Adobe. We currently have several teams working on our next generation of storefront components along with the SDK tools to build them... Stay tuned!
+Here at Adobe, we are hard at work, actively solving the complexity of e-commerce frontends. We currently have several teams working on the next generation of frontend components along with the framework and SDK tools to build them... Stay tuned!

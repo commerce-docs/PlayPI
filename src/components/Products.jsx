@@ -1,16 +1,16 @@
 import Price from '@/components/base/Price';
 import Spinner from '@/components/base/Spinner';
-import { useDataStore } from '@/DataProvider';
+import { useProductsProvider } from '@/ProductsProvider';
 
 const Products = () => {
-  const { dataStore, isLoading, updateProduct } = useDataStore();
+  const { products, isLoading, updateProduct } = useProductsProvider();
 
   if (isLoading) return <Spinner />;
 
   return (
     <div className='mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8'>
       <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8'>
-        {dataStore.products.map((product) => (
+        {products.map((product) => (
           <ProductTile key={product.uid} product={product} updateProduct={updateProduct} />
         ))}
       </div>

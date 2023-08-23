@@ -1,6 +1,6 @@
 {
-  "name": "explorer",
-  "description": "Explore the Adobe Commerce GraphQL API",
+  "name": "products-api-app",
+  "description": "Explore the Adobe Commerce Products GraphQL API",
   "private": true,
   "version": "0.0.1",
   "type": "module",

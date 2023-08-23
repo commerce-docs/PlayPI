@@ -1,4 +1,7 @@
-export default function Options({ options, selectedOption, setSelectedOption, productDetails }) {
+import { RadioGroup } from '@headlessui/react';
+import classNames from 'classnames';
+
+export default function Options({ options, selectedOption, updateOption, productDetails }) {
   if (!options) return null;
 
   return (
@@ -10,7 +13,7 @@ export default function Options({ options, selectedOption, setSelectedOption, pr
               key={option.uid}
               option={option}
               selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
+              updateOption={updateOption}
             />
           );
         } else if (option.values[0].swatch_data.__typename === 'TextSwatchData') {
@@ -19,7 +22,7 @@ export default function Options({ options, selectedOption, setSelectedOption, pr
               key={option.uid}
               option={option}
               selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
+              updateOption={updateOption}
               productDetails={productDetails}
             />
           );
@@ -31,7 +34,7 @@ export default function Options({ options, selectedOption, setSelectedOption, pr
   );
 }
 
-function OptionColor({ option, selectedOption, setSelectedOption }) {
+function OptionColor({ option, selectedOption, updateOption }) {
   return (
     <div className='mt-4'>
       <div className='flex items-center justify-between'>
@@ -39,7 +42,7 @@ function OptionColor({ option, selectedOption, setSelectedOption }) {
       </div>
       <RadioGroup
         value={selectedOption}
-        onChange={() => setSelectedOption(selectedOption)}
+        onChange={() => updateOption(selectedOption)}
         className='mt-2'
       >
         <RadioGroup.Label className='sr-only'>Choose a {option.label}</RadioGroup.Label>
@@ -54,7 +57,7 @@ function OptionColor({ option, selectedOption, setSelectedOption }) {
               className={({ active, checked }) =>
                 classNames(
                   value.selectedOption,
-                  active && checked ? 'ring ring-offset-1' : '',
+                  active && checked ? 'ring ring-offset-2' : '',
                   !active && checked ? 'ring-2' : '',
                   'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
                 )
@@ -78,7 +81,7 @@ function OptionColor({ option, selectedOption, setSelectedOption }) {
   );
 }
 
-function OptionText({ option, selectedOption, setSelectedOption, productDetails }) {
+function OptionText({ option, selectedOption, updateOption, productDetails }) {
   return (
     <div className='mt-6'>
       <div className='flex items-center justify-between'>
@@ -86,7 +89,7 @@ function OptionText({ option, selectedOption, setSelectedOption, productDetails 
       </div>
       <RadioGroup
         value={selectedOption}
-        onChange={() => setSelectedOption(selectedOption)}
+        onChange={() => updateOption(selectedOption)}
         className='mt-2'
       >
         <RadioGroup.Label className='sr-only'>Choose a {option.label}</RadioGroup.Label>

@@ -1,23 +1,23 @@
 import Spinner from '@/components/base/Spinner';
 import classNames from 'classnames';
 import noImage from '@/assets/no-image.jpg';
-import { useDataStore } from '@/DataProvider';
+import { useProductsProvider } from '@/ProductsProvider';
 
 const Categories = () => {
-  const { dataStore, isLoading, updateCategory } = useDataStore();
+  const { categories, selectedCategory, isLoading, updateCategory } = useProductsProvider();
 
   if (isLoading) return <Spinner />;
 
   return (
     <div className='mt-6 -mb-6 px-4'>
       <DropdownCategories
-        categories={dataStore.categories}
-        selectedCategory={dataStore.selectedCategory}
+        categories={categories}
+        selectedCategory={selectedCategory}
         updateCategory={updateCategory}
       />
       <BlockCategories
-        categories={dataStore.categories}
-        selectedCategory={dataStore.selectedCategory}
+        categories={categories}
+        selectedCategory={selectedCategory}
         updateCategory={updateCategory}
       />
     </div>
