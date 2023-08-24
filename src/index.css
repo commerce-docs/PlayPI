@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  overflow-x: hidden;
+.bg-lilac {
+  background-color: #dcd5e1;
+}
+.bg-rain {
+  background-color: #d4e3ec;
+}
+.bg-peach {
+  background-color: #fee1d2;
+}
+.bg-khaki {
+  background-color: #f9efe5;
+}
+.bg-lily {
+  background-color: #d8f0d8;
+}
+.bg-mint {
+  background-color: #f0f0c0;
+}
+.bg-latte {
+  background-color: #c0a890;
 }

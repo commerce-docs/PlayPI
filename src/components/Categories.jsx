@@ -1,5 +1,5 @@
 import Spinner from '@/components/base/Spinner';
-import classNames from 'classnames';
+import classNames from '@/utils/classNames';
 import noImage from '@/assets/no-image.jpg';
 import { useProductsProvider } from '@/ProductsProvider';
 
@@ -33,7 +33,7 @@ const Categories = () => {
           onChange={(e) => updateCategory(e.target.value)}
           id='categories'
           name='categories'
-          className='block w-full rounded-md border-gray-300 mb-0 py-2 pl-3 pr-10 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
+          className='block w-full rounded-md border-gray-300 mb-0 p-4 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
           value={selectedCategory}
         >
           {categories.map(({ name, uid }) => (

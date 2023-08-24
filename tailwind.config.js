@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx}', './index.html', './ProductApp.jsx', './src/**/*.jsx'],
+  content: ['./src/*.jsx', './src/components/**/*.jsx'],
   darkMode: 'media',
   theme: {
     extend: {
@@ -13,9 +13,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/aspect-ratio'), require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

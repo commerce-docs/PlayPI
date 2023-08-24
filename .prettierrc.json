@@ -31,7 +31,7 @@
 
   "overrides": [
     {
-      "files": ["*.json"],
+      "files": ["*.json", "tailwind.config.js"],
       "options": {
         "printWidth": 200
       }

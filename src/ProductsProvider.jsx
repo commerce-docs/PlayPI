@@ -2,25 +2,29 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import fetchCategories from './api/fetchCategories';
 import fetchProducts from './api/fetchProducts';
 import fetchDetails from './api/fetchDetails';
+import separateOptions from './utils/separateOptions';
 
 const ProductsContext = createContext();
 
 const initialState = {
   categoryLevel: '2',
   categories: [],
-  options: [],
-  products: [],
-  productDetails: null,
-  isConfigurableProduct: false,
-  hasCustomAttributes: false,
   selectedCategory: 'MTg=',
-  selectedProduct: null,
-  selectedOption: null,
+  products: [],
+  selectedProductSku: '',
+  productDetails: null,
+  colorOptions: [],
+  colorOptionsLabel: '',
+  sizeOptions: [],
+  sizeOptionsLabel: '',
+  selectedColorOption: null,
+  selectedSizeOption: null,
+  hasCustomAttributes: false,
   modalIsOpen: false,
   isLoading: true,
 };
 
-const reducer = (state, action) => {
+const productReducer = (state, action) => {
   switch (action.type) {
     case 'SET_CATEGORIES':
       return { ...state, categories: action.categories };
@@ -30,9 +34,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         productDetails: action.productDetails,
-        options: action.productDetails.configurable_options || [],
-        isConfigurableProduct: Boolean(action.productDetails.configurable_options?.length > 0),
-        hasCustomAttributes: Boolean(action.productDetails.custom_attributes?.length > 0),
+        colorOptions: action.colorOptions,
+        sizeOptions: action.sizeOptions,
+        colorOptionsLabel: action.colorOptionsLabel,
+        sizeOptionsLabel: action.sizeOptionsLabel,
+        hasCustomAttributes: action.hasCustomAttributes,
       };
     case 'UPDATE_SELECTION':
       return { ...state, ...action.payload };
@@ -42,7 +48,7 @@ const reducer = (state, action) => {
 };
 
 const ProductsProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(productReducer, initialState);
 
   useEffect(() => {
     (async () => {
@@ -68,23 +74,36 @@ const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     (async () => {
-      if (state.selectedProduct) {
+      if (state.selectedProductSku) {
         try {
-          const productDetails = await fetchDetails(state.selectedProduct);
-          dispatch({ type: 'SET_PRODUCT_DETAILS', productDetails });
+          const productDetails = await fetchDetails(state.selectedProductSku);
+          const { colorOptions, sizeOptions, colorOptionsLabel, sizeOptionsLabel } =
+            separateOptions(productDetails.configurable_options);
+          const hasCustomAttributes = Boolean(productDetails.custom_attributes?.length > 0);
+
+          dispatch({
+            type: 'SET_PRODUCT_DETAILS',
+            productDetails,
+            colorOptions,
+            colorOptionsLabel,
+            sizeOptions,
+            sizeOptionsLabel,
+            hasCustomAttributes,
+          });
           openModal(true);
         } catch (error) {
           console.error('Error fetching product details:', error);
         }
       }
     })();
-  }, [state.selectedProduct]);
+  }, [state.selectedProductSku]);
 
   const updateSelection = (payload) => dispatch({ type: 'UPDATE_SELECTION', payload });
 
   const updateCategory = (selectedCategory) => updateSelection({ selectedCategory });
-  const updateProduct = (selectedProduct) => updateSelection({ selectedProduct });
-  const updateOption = (selectedOption) => updateSelection({ selectedOption });
+  const updateProduct = (selectedProductSku) => updateSelection({ selectedProductSku });
+  const updateSizeOption = (selectedSizeOption) => updateSelection({ selectedSizeOption });
+  const updateColorOption = (selectedColorOption) => updateSelection({ selectedColorOption });
   const openModal = (open = false) => updateSelection({ modalIsOpen: open });
 
   return (
@@ -93,7 +112,8 @@ const ProductsProvider = ({ children }) => {
         ...state,
         updateCategory,
         updateProduct,
-        updateOption,
+        updateColorOption,
+        updateSizeOption,
         openModal,
       }}
     >

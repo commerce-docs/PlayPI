@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classNames from '@/utils/classNames';
 import { Tab } from '@headlessui/react';
 
 export default function Images({ productDetails }) {
@@ -51,18 +51,6 @@ export default function Images({ productDetails }) {
             ))}
           </Tab.Panels>
         </Tab.Group>
-
-        {/* {selectedProduct.media_gallery.map((image) => (
-          <img
-            key={image.position}
-            src={image.url}
-            alt={image.label}
-            className={classNames(
-              image.label === 'Main' ? 'lg:col-span-2 lg:row-span-2' : 'hidden lg:block',
-              'rounded-lg',
-            )}
-          />
-        ))} */}
       </div>
     </div>
   );

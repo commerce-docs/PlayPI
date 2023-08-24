@@ -18,7 +18,7 @@ export default function Modal({ children }) {
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <div className='fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity md:block' />
+          <div className='fixed inset-0 hidden bg-gray-500 bg-opacity-75 transition-opacity sm:block md:block' />
         </Transition.Child>
 
         <div className='fixed inset-0 z-10 overflow-y-auto'>
@@ -36,11 +36,11 @@ export default function Modal({ children }) {
               leaveFrom='opacity-100 translate-y-0 md:scale-100'
               leaveTo='opacity-0 translate-y-4 md:translate-y-0 md:scale-95'
             >
-              <Dialog.Panel className='flex w-full transform text-left text-base transition md:my-2 md:max-w-2xl md:px-4 lg:max-w-4xl'>
-                <div className='relative flex rounded-lg overflow-hidden bg-white shadow-2xl sm:px-6 sm:pt-8 md:p-2 lg:p-2'>
+              <Dialog.Panel className='flex w-full transform text-left text-base transition sm:my-8 sm:max-w-xl md:my-8 md:max-w-2xl md:px-4 lg:max-w-4xl'>
+                <div className='relative flex rounded-lg overflow-hidden bg-white shadow-2xl sm:px-6 sm:py-0 md:p-2 lg:p-2'>
                   <button
                     type='button'
-                    className='absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-8 sm:top-8 md:right-6 md:top-6 lg:right-6 lg:top-4'
+                    className='absolute right-3 top-7 sm:right-3 sm:top-7 text-gray-400 hover:text-gray-500 md:right-6 md:top-6 lg:right-6 lg:top-4'
                     onClick={() => openModal(false)}
                   >
                     <span className='sr-only'>Close</span>

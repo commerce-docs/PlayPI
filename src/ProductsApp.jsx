@@ -3,10 +3,11 @@ import Categories from '@/components/Categories';
 import Products from '@/components/Products';
 import Modal from '@/components/base/Modal';
 import Details from '@/components/Details';
+import './index.css';
 
 export default function App() {
   return (
-    <ProductsProvider className='container m-auto'>
+    <ProductsProvider>
       <Categories />
       <Products />
       <Modal>
