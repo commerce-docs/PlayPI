@@ -1,10 +1,8 @@
 # Commerce Products API Explorer
 
-With just three products-based GraphQL queries, this simple React app highlights only a part of Adobe's extensive Commerce API. The three queries in the app focus on fetching product data to drive a simple products page that might exist in a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
+With just three product-based GraphQL queries, this simple React app helps highlight some of the Products API from Adobe's extensive Commerce API. The three queries fetch different types of product data to drive a simple products page that might exist in a larger storefront. Nearly 100% of the app's content is returned from queries to our reference Venia store: [venia.magento.com](https://venia.magento.com).
 
-This example app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components).
-
-This app is only meant to demonstrate how you can retrieve data from the Commerce GraphQL API — in this case, product data — and display it in a simple React frontend. Other frontend frameworks can also be used.
+This app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components). It's only meant to demonstrate just how much data you can retrieve and present with the Commerce API.
 
 ## Project structure
 
@@ -13,7 +11,7 @@ The project contains two main directories:
 - `src/api` — for GraphQL queries, client, and endpoint
 - `src/components` — for displaying the data
 
-## Project api
+## Project API
 
 The `api` directory contains the GraphQL queries to Venia's Commerce backend:
 
@@ -21,7 +19,8 @@ The `api` directory contains the GraphQL queries to Venia's Commerce backend:
 - `fetchProducts.js` — Defines the PRODUCTS query for fetching the selected category's products (limited to 12 for simplicity).
 - `fetchDetails.js` — Defines the DETAILS query for fetching the selected product's details.
 
-To keep things simple, Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint.
+To keep things simple, the Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint. 
+But of course you can use any GraphQL library you want. 
 
 ## Project components
 
