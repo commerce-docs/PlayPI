@@ -1,7 +1,7 @@
 export default function Breadcrumbs({ product }) {
   return (
-    <nav aria-label='Breadcrumb' className='max-w-7xl px-4 sm:px-6 lg:px-8 sm:pt-4'>
-      <ul role='list' className='flex items-center space-x-4'>
+    <nav aria-label='Breadcrumb' className='max-w-7xl px-4 sm:px-6 sm:pt-4 lg:px-8'>
+      <ul role='list' className='flex items-center space-x-3 list-none ml-0'>
         {product?.categories?.map((category) => (
           <li key={category.uid}>
             <div className='flex items-center'>

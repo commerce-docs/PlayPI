@@ -1,6 +1,4 @@
 {
-  "tailwindCSS.lint.invalidTailwindDirective": "ignore",
-  "tailwindCSS.experimental.configFile": null,
   "files.associations": { "*.css": "tailwindcss" },
   "editor.quickSuggestions": {
     "strings": true
@@ -8,8 +6,15 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
-  "prettier.configPath": "./.prettierrc.json",
+  "prettier.configPath": ".prettierrc.js",
   "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
   "editor.fontSize": 13,
-  "markdown.preview.fontSize": 13
+  "markdown.preview.fontSize": 13,
+  "prettier.documentSelectors": ["**/*.{ts,js,tsx,jsx,css}"],
+  "prettier.jsxSingleQuote": true,
+  "prettier.insertPragma": true,
+  "prettier.printWidth": 100,
+  "prettier.prettierPath": "./node_modules/prettier",
+  "prettier.singleQuote": true,
+  "prettier.useEditorConfig": false
 }

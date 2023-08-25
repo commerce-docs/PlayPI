@@ -1,7 +1,4 @@
-node_modules
-dist
-build
-coverage
-yarn.lock
-README.md
-public/*
+**/.git
+**/.svn
+**/.hg
+**/node_modules

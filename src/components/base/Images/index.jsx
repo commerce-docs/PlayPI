@@ -3,7 +3,7 @@ import { Tab } from '@headlessui/react';
 
 export default function Images({ productDetails }) {
   return (
-    <div className='mt-8 lg:col-span-7 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0'>
+    <div className='mt-8 lg:col-span-6 lg:col-start-1 lg:row-span-3 lg:row-start-1 lg:mt-0'>
       <h2 className='sr-only'>Product images</h2>
       <div className='grid grid-cols-1 lg:grid-cols-1 lg:grid-rows-1 lg:gap-8'>
         <Tab.Group as='div' className='flex flex-col-reverse'>
@@ -13,8 +13,7 @@ export default function Images({ productDetails }) {
               {productDetails.media_gallery.map((image) => (
                 <Tab
                   key={image.position}
-                  className='relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4'
-                >
+                  className='relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4'>
                   {({ selected }) => (
                     <>
                       <span className='sr-only'>{image.name}</span>
@@ -28,7 +27,7 @@ export default function Images({ productDetails }) {
                       <span
                         className={classNames(
                           selected ? 'ring-blue-500' : 'ring-transparent',
-                          'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
+                          'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
                         )}
                         aria-hidden='true'
                       />

@@ -46,7 +46,7 @@ function AttributeItem({ attribute }) {
 
   return (
     <li>
-      <span className='text-gray-600 font-light'>
+      <span className='font-light text-gray-600'>
         {attribute.attribute_metadata.label}
         {': '}
       </span>
@@ -58,7 +58,7 @@ function AttributeItem({ attribute }) {
 function AttributeOptions({ options }) {
   if (options?.length > 1) {
     return options.map((option, index) => (
-      <span key={option.uid} className='text-gray-900 font-normal'>
+      <span key={option.uid} className='font-normal text-gray-900'>
         {option.label}
         {index !== options.length - 1 && ', '}
       </span>
@@ -66,7 +66,7 @@ function AttributeOptions({ options }) {
   }
 
   if (options?.length > 0) {
-    return <span className='text-gray-900 font-normal'>{options[0].label}</span>;
+    return <span className='font-normal text-gray-900'>{options[0].label}</span>;
   }
 
   return null;

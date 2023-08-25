@@ -9,7 +9,7 @@ const Categories = () => {
   if (isLoading) return <Spinner />;
 
   return (
-    <div className='mt-6 -mb-6 px-4'>
+    <div className='-mb-6 mt-6 px-4'>
       <DropdownCategories
         categories={categories}
         selectedCategory={selectedCategory}
@@ -25,7 +25,7 @@ const Categories = () => {
 
   function DropdownCategories({ categories, selectedCategory, updateCategory }) {
     return (
-      <div className='sm:hidden -mb-6'>
+      <div className='-mb-6 sm:hidden'>
         <label htmlFor='categories' className='sr-only'>
           Select a product category
         </label>
@@ -33,9 +33,8 @@ const Categories = () => {
           onChange={(e) => updateCategory(e.target.value)}
           id='categories'
           name='categories'
-          className='block w-full rounded-md border-gray-300 mb-0 p-4 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
-          value={selectedCategory}
-        >
+          className='mb-0 block w-full rounded-md border-gray-300 p-4 text-base focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm'
+          value={selectedCategory}>
           {categories.map(({ name, uid }) => (
             <option key={uid} value={uid}>
               {name}
@@ -62,12 +61,11 @@ const Categories = () => {
                 selectedCategory === category.uid
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700',
-                'border-b-2 mx-2 pb-2 text-sm font-medium w-auto text-center',
-              )}
-            >
+                'mx-2 w-auto border-b-2 pb-2 text-center text-sm font-medium'
+              )}>
               <div className='flex-col'>
                 <img
-                  className='rounded-md max-w-full mb-2'
+                  className='mb-2 max-w-full rounded-md'
                   src={category.image || noImage}
                   alt={category.name}
                 />

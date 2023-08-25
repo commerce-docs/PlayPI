@@ -4,6 +4,8 @@ export default function separateOptions(options) {
   let colorOptionsLabel = 'Colors';
   let sizeOptionsLabel = 'Sizes';
 
+  if (!options) return { colorOptions, sizeOptions, colorOptionsLabel, sizeOptionsLabel };
+
   options.forEach((option) => {
     option.values.forEach((value) => {
       if (value.swatch_data.__typename === 'ColorSwatchData') {

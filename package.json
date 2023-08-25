@@ -12,7 +12,7 @@
     "build:prod": "NODE_ENV=production vite build",
     "clean": "rm -rf dist && rm -rf node_modules",
     "dev": "vite --open",
-    "format": "prettier --write .",
+    "format": "prettier . --write",
     "preview": "vite preview",
     "start:server": "yarn workspace proxy-server start"
   },

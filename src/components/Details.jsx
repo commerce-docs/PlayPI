@@ -35,22 +35,22 @@ export default function Details() {
     <div>
       {productDetails && (
         <div className='bg-white'>
-          <div className='w-full pt-8 pb-12 px-8 sm:pt-4 sm:pb-12 sm:px-0 md:pt-0 md:pb-6'>
+          <div className='w-full px-8 pb-12 pt-8 sm:px-0 sm:pb-12 sm:pt-4 md:pb-6 md:pt-0'>
             <div className='flex justify-start'>
               <Breadcrumbs product={productDetails} />
             </div>
             <div className='mx-auto mt-8 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
               <div className='lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8'>
-                <div className='lg:col-span-5 lg:col-start-8'>
-                  <div className='flex justify-between'>
+                <div className='lg:col-span-6 lg:col-start-7'>
+                  <div className='flex w-full justify-between'>
                     <h1 className='text-xl font-medium text-gray-900'>{productDetails.name}</h1>
-                    <p className='text-xl font-medium text-gray-900'>
+                    <div className='text-xl font-medium text-gray-900'>
                       <Price productDetails={productDetails} />
-                    </p>
+                    </div>
                   </div>
                 </div>
                 <Images productDetails={productDetails} />
-                <div className='mt-4 lg:col-span-5'>
+                <div className='mt-4 col-span-6 sm:col-span-6 lg:col-span-6'>
                   <form>
                     {colorOptions?.length > 0 && (
                       <ColorOptions

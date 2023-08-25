@@ -3,6 +3,7 @@ import fetchCategories from './api/fetchCategories';
 import fetchProducts from './api/fetchProducts';
 import fetchDetails from './api/fetchDetails';
 import separateOptions from './utils/separateOptions';
+import './index.css';
 
 const ProductsContext = createContext();
 
@@ -115,8 +116,7 @@ const ProductsProvider = ({ children }) => {
         updateColorOption,
         updateSizeOption,
         openModal,
-      }}
-    >
+      }}>
       {children}
     </ProductsContext.Provider>
   );

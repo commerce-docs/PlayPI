@@ -2,9 +2,9 @@
 
 With just three products-based GraphQL queries, this simple React app highlights only a part of Adobe's extensive Commerce API. The three queries in the app focus on fetching product data to drive a simple products page that might exist in a larger storefront. The app fetches all its content from our example Venia store: [venia.magento.com](https://venia.magento.com).
 
-This example app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components). 
+This example app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components).
 
-This app is only meant to demonstrate how you can retrieve data from the Commerce GraphQL API — in this case, product data — and display it in a simple React frontend. Other frontend frameworks can also be used. 
+This app is only meant to demonstrate how you can retrieve data from the Commerce GraphQL API — in this case, product data — and display it in a simple React frontend. Other frontend frameworks can also be used.
 
 ## Project structure
 
@@ -28,7 +28,7 @@ To keep things simple, Commerce Product APIs accessed in this app use JavaScript
 For the sake of simplicity, each query has a corresponding component to display the data returned:
 
 - `ProductCategories.jsx`
-- `ProductList.jsx` 
+- `ProductList.jsx`
 - `ProductDetails.jsx`
 
 The `base` directory contains a variety of other components used as children within the three main components.
@@ -48,11 +48,11 @@ Tailwindcss is used for all component styling.
 
 - **Done**. ~~Fix color and size configurable options.~~
 - **Done**. ~~Display `ProductDetails` in a modal. Currently, the product details appears at the bottom of the page.~~
-- *In-Progress*. Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
-- Create a "data-only" view. No product images or text will be displayed. Only the GraphQL fields and the component name that uses them will be rendered on the screen—in boxes at the same locations in the UI. The purpose is to demonstrate how data from the Commerce GraphQL API feeds a frontend — any frontend! 
+- _In-Progress_. Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
+- Create a "data-only" view. No product images or text will be displayed. Only the GraphQL fields and the component name that uses them will be rendered on the screen—in boxes at the same locations in the UI. The purpose is to demonstrate how data from the Commerce GraphQL API feeds a frontend — any frontend!
 
 ## The future of Adobe Commerce frontend components
 
-If nothing else, this project should show just how hard it is to create good frontend e-commerce components and how many are involved in even the simplest of single-page apps. 
+If nothing else, this project should show just how hard it is to create good frontend e-commerce components and how many are involved in even the simplest of single-page apps.
 
 Here at Adobe, we are hard at work, actively solving the complexity of e-commerce frontends. We currently have several teams working on the next generation of frontend components along with the framework and SDK tools to build them... Stay tuned!

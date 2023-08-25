@@ -10,7 +10,7 @@ app.use(
   createProxyMiddleware({
     target: 'https://venia.magento.com/graphql',
     changeOrigin: true,
-  }),
+  })
 );
 
 app.listen(3001);

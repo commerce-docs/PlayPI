@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  p {
+    @apply pt-3 pb-1;
+  }
+  ul {
+    @apply ml-4 list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+}
+
 .bg-lilac {
   background-color: #dcd5e1;
 }
