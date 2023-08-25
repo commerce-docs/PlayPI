@@ -145,8 +145,6 @@ const fetchDetails = async (productSku) => {
   const response = await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    mode: 'no-cors',
-    credentials: 'omit',
     body: JSON.stringify({ query, variables }),
   });
   const data = await response.json();
