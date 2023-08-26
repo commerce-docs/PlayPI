@@ -2,7 +2,7 @@
 .DS_Store
 **/.idea
 **/.history
-yarn.lock
 **/node_modules
 **/dist
-.vscode
+**/.vscode
+yarn.lock

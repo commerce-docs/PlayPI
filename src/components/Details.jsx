@@ -7,7 +7,7 @@ import Price from "@/components/base/Price";
 import ColorOptions from "@/components/base/ColorOptions";
 import SizeOptions from "@/components/base/SizeOptions";
 import Breadcrumbs from "@/components/base/Breadcrumbs";
-import { useProductsProvider } from "@/ProductsProvider";
+import { useAppProvider } from "@/AppProvider";
 
 export default function Details() {
   const {
@@ -24,7 +24,7 @@ export default function Details() {
     selectedSize,
     hasCustomAttributes,
     isLoading,
-  } = useProductsProvider();
+  } = useAppProvider();
 
   if (isLoading) return <Spinner />;
 

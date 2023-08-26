@@ -1,8 +1,8 @@
-var express = require('express');
-var cors = require('cors');
-var { createProxyMiddleware } = require('http-proxy-middleware');
+import express from 'express';
+import cors from 'cors';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
-var app = express();
+const app = express();
 app.use(cors());
 
 app.use(

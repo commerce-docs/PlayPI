@@ -19,8 +19,8 @@ The `api` directory contains the GraphQL queries to Venia's Commerce backend:
 - `fetchProducts.js` — Defines the PRODUCTS query for fetching the selected category's products (limited to 12 for simplicity).
 - `fetchDetails.js` — Defines the DETAILS query for fetching the selected product's details.
 
-To keep things simple, the Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint. 
-But of course you can use any GraphQL library you want. 
+To keep things simple, the Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint.
+But of course you can use any GraphQL library you want.
 
 ## Project components
 
@@ -39,7 +39,7 @@ Tailwindcss is used for all component styling.
 1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
 2. Change directories: `cd playpi`
 3. Run `yarn` to install dependencies.
-4. Run `yarn start:server` to start the project's proxy server so you can access Venia's GraphQL endpoint.
+4. Run `yarn start:proxy` to start the project's proxy server so you can access Venia's GraphQL endpoint.
 5. Open another shell (to keep the proxy-server running)
 6. Run `yarn dev` to launch the product page example.
 

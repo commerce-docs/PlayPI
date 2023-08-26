@@ -1,9 +1,9 @@
 import Price from "@/components/base/Price";
 import Spinner from "@/components/base/Spinner";
-import { useProductsProvider } from "@/ProductsProvider";
+import { useAppProvider } from "@/AppProvider";
 
 const Products = () => {
-  const { products, isLoading, updateProduct } = useProductsProvider();
+  const { products, isLoading, updateProduct } = useAppProvider();
 
   if (isLoading) return <Spinner />;
 

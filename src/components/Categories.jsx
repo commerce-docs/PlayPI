@@ -1,11 +1,11 @@
 import Spinner from "@/components/base/Spinner";
 import classNames from "@/utils/classNames";
 import noImage from "@/assets/no-image.jpg";
-import { useProductsProvider } from "@/ProductsProvider";
+import { useAppProvider } from "@/AppProvider";
 
 const Categories = () => {
   const { categories, selectedCategory, isLoading, updateCategory } =
-    useProductsProvider();
+    useAppProvider();
 
   if (isLoading) return <Spinner />;
 

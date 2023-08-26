@@ -4,10 +4,8 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "workspaces": [
-    "frontend/*",
-    "backend/*"
-  ],
+  "license": "Apache-2.0",
+  "main": "index.html",
   "scripts": {
     "build": "vite build && vite preview",
     "build:prod": "NODE_ENV=production vite build && vite preview",
@@ -15,9 +13,12 @@
     "dev": "vite --open",
     "format": "yarn prettier . --write",
     "preview": "vite preview",
-    "start:server": "yarn workspace backend proxy-server start"
+    "start:proxy": "node proxy.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@stackblitz/sdk": "^1.9.0",

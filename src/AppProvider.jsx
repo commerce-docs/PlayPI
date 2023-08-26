@@ -4,7 +4,7 @@ import fetchProducts from "./api/fetchProducts";
 import fetchDetails from "./api/fetchDetails";
 import separateOptions from "./utils/separateOptions";
 
-const ProductsContext = createContext();
+const AppContext = createContext();
 
 const initialState = {
   categoryLevel: "2",
@@ -47,7 +47,7 @@ const productReducer = (state, action) => {
   }
 };
 
-const ProductsProvider = ({ children }) => {
+const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(productReducer, initialState);
 
   useEffect(() => {
@@ -118,7 +118,7 @@ const ProductsProvider = ({ children }) => {
   const openModal = (open = false) => updateSelection({ modalIsOpen: open });
 
   return (
-    <ProductsContext.Provider
+    <AppContext.Provider
       value={{
         ...state,
         updateCategory,
@@ -129,12 +129,12 @@ const ProductsProvider = ({ children }) => {
       }}
     >
       {children}
-    </ProductsContext.Provider>
+    </AppContext.Provider>
   );
 };
 
-export const useProductsProvider = () => {
-  const context = useContext(ProductsContext);
+export const useAppProvider = () => {
+  const context = useContext(AppContext);
   if (!context) {
     throw new Error(
       "useProductsProvider must be used within the ProductsProvider",
@@ -143,4 +143,4 @@ export const useProductsProvider = () => {
   return context;
 };
 
-export default ProductsProvider;
+export default AppProvider;

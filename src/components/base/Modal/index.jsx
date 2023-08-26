@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useProductsProvider } from "@/ProductsProvider";
+import { useAppProvider } from "@/AppProvider";
 
 export default function Modal({ children }) {
-  const { modalIsOpen, openModal } = useProductsProvider();
+  const { modalIsOpen, openModal } = useAppProvider();
 
   return (
     <Transition.Root show={modalIsOpen} as={Fragment}>
