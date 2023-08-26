@@ -1,7 +1,8 @@
 .env
-dist
-node_modules
 .DS_Store
-.idea
-.history
-#proxy-server
+**/.idea
+**/.history
+yarn.lock
+**/node_modules
+**/dist
+**/.vscode

@@ -3,18 +3,13 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
 
-  "prettier.configPath": ".prettierrc.js",
+  // "prettier.configPath": "prettier.config.js",
   "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace",
   "editor.fontSize": 13,
   "markdown.preview.fontSize": 13,
-  "prettier.documentSelectors": ["**/*.{ts,js,tsx,jsx,css}"],
-  "prettier.jsxSingleQuote": true,
-  "prettier.insertPragma": true,
-  "prettier.printWidth": 100,
-  "prettier.prettierPath": "./node_modules/prettier",
-  "prettier.singleQuote": true,
-  "prettier.useEditorConfig": false
+  "explorer.compactFolders": false,
+  "vs-code-prettier-eslint.prettierLast": true
 }

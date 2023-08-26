@@ -1,4 +1,7 @@
 **/.git
-**/.svn
-**/.hg
+**/.vscode
+**/.history
 **/node_modules
+**/dist
+yarn.lock
+

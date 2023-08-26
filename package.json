@@ -5,16 +5,17 @@
   "version": "0.0.1",
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "frontend/*",
+    "backend/*"
   ],
   "scripts": {
-    "build": "vite build && vite preview --open",
-    "build:prod": "NODE_ENV=production vite build",
+    "build": "vite build && vite preview",
+    "build:prod": "NODE_ENV=production vite build && vite preview",
     "clean": "rm -rf dist && rm -rf node_modules",
     "dev": "vite --open",
-    "format": "prettier . --write",
+    "format": "yarn prettier . --write",
     "preview": "vite preview",
-    "start:server": "yarn workspace proxy-server start"
+    "start:server": "yarn workspace backend proxy-server start"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
