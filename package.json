@@ -12,7 +12,7 @@
     "dev": "vite",
     "format": "yarn prettier . --write",
     "preview": "vite preview",
-    "start:proxy": "node proxy.js"
+    "start:proxy": "node src/api/server.js"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

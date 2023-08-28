@@ -1,4 +1,4 @@
-import {endpoint} from './endpoint';
+import { endpoint } from './endpoint';
 
 const PRODUCTS = `
   query ProductsQuery($selectedCategory: String!) {

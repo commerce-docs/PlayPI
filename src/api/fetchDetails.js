@@ -1,4 +1,4 @@
-import {endpoint} from './endpoint';
+import { endpoint } from './endpoint';
 
 const DETAILS = `
   query ProductDetailsQuery($productSku: String!) {
