@@ -1,22 +1,22 @@
-import React, { createContext, useContext, useReducer, useEffect } from "react";
-import fetchCategories from "./api/fetchCategories";
-import fetchProducts from "./api/fetchProducts";
-import fetchDetails from "./api/fetchDetails";
-import separateOptions from "./utils/separateOptions";
+import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import fetchCategories from './api/fetchCategories';
+import fetchProducts from './api/fetchProducts';
+import fetchDetails from './api/fetchDetails';
+import separateOptions from './utils/separateOptions';
 
 const AppContext = createContext();
 
 const initialState = {
-  categoryLevel: "2",
+  categoryLevel: '2',
   categories: [],
-  selectedCategory: "MTg=",
+  selectedCategory: 'MTg=',
   products: [],
-  selectedProductSku: "",
+  selectedProductSku: '',
   productDetails: null,
   colorOptions: [],
-  colorOptionsLabel: "",
+  colorOptionsLabel: '',
   sizeOptions: [],
-  sizeOptionsLabel: "",
+  sizeOptionsLabel: '',
   selectedColorOption: null,
   selectedSizeOption: null,
   hasCustomAttributes: false,
@@ -26,11 +26,11 @@ const initialState = {
 
 const productReducer = (state, action) => {
   switch (action.type) {
-    case "SET_CATEGORIES":
+    case 'SET_CATEGORIES':
       return { ...state, categories: action.categories };
-    case "SET_PRODUCTS":
+    case 'SET_PRODUCTS':
       return { ...state, products: action.products, isLoading: false };
-    case "SET_PRODUCT_DETAILS":
+    case 'SET_PRODUCT_DETAILS':
       return {
         ...state,
         productDetails: action.productDetails,
@@ -40,7 +40,7 @@ const productReducer = (state, action) => {
         sizeOptionsLabel: action.sizeOptionsLabel,
         hasCustomAttributes: action.hasCustomAttributes,
       };
-    case "UPDATE_SELECTION":
+    case 'UPDATE_SELECTION':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -54,9 +54,9 @@ const AppProvider = ({ children }) => {
     (async () => {
       try {
         const categories = await fetchCategories(state.categoryLevel);
-        dispatch({ type: "SET_CATEGORIES", categories });
+        dispatch({ type: 'SET_CATEGORIES', categories });
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error('Error fetching categories:', error);
       }
     })();
   }, [state.categoryLevel]);
@@ -65,9 +65,9 @@ const AppProvider = ({ children }) => {
     (async () => {
       try {
         const products = await fetchProducts(state.selectedCategory);
-        dispatch({ type: "SET_PRODUCTS", products });
+        dispatch({ type: 'SET_PRODUCTS', products });
       } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       }
     })();
   }, [state.selectedCategory]);
@@ -84,11 +84,11 @@ const AppProvider = ({ children }) => {
             sizeOptionsLabel,
           } = separateOptions(productDetails.configurable_options);
           const hasCustomAttributes = Boolean(
-            productDetails.custom_attributes?.length > 0,
+            productDetails.custom_attributes?.length > 0
           );
 
           dispatch({
-            type: "SET_PRODUCT_DETAILS",
+            type: 'SET_PRODUCT_DETAILS',
             productDetails,
             colorOptions,
             colorOptionsLabel,
@@ -98,14 +98,14 @@ const AppProvider = ({ children }) => {
           });
           openModal(true);
         } catch (error) {
-          console.error("Error fetching product details:", error);
+          console.error('Error fetching product details:', error);
         }
       }
     })();
   }, [state.selectedProductSku]);
 
   const updateSelection = (payload) =>
-    dispatch({ type: "UPDATE_SELECTION", payload });
+    dispatch({ type: 'UPDATE_SELECTION', payload });
 
   const updateCategory = (selectedCategory) =>
     updateSelection({ selectedCategory });
@@ -126,8 +126,7 @@ const AppProvider = ({ children }) => {
         updateColorOption,
         updateSizeOption,
         openModal,
-      }}
-    >
+      }}>
       {children}
     </AppContext.Provider>
   );
@@ -137,7 +136,7 @@ export const useAppProvider = () => {
   const context = useContext(AppContext);
   if (!context) {
     throw new Error(
-      "useProductsProvider must be used within the ProductsProvider",
+      'useProductsProvider must be used within the ProductsProvider'
     );
   }
   return context;

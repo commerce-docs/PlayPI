@@ -148,7 +148,10 @@ const fetchDetails = async (productSku) => {
     body: JSON.stringify({ query, variables }),
   });
   const data = await response.json();
-  console.log('returning data.data.products.items[0]:', data.data.products.items[0]);
+  console.log(
+    'returning data.data.products.items[0]:',
+    data.data.products.items[0]
+  );
   return data.data.products.items[0];
 };
 

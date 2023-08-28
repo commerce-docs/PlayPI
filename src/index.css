@@ -4,7 +4,7 @@
 
 @layer base {
   p {
-    @apply pt-3 pb-1;
+    @apply pb-1 pt-3;
   }
   ul {
     @apply ml-4 list-disc;

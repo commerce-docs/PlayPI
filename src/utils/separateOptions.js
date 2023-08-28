@@ -1,20 +1,20 @@
 export default function separateOptions(options) {
   const colorOptions = [];
   const sizeOptions = [];
-  let colorOptionsLabel = "Colors";
-  let sizeOptionsLabel = "Sizes";
+  let colorOptionsLabel = 'Colors';
+  let sizeOptionsLabel = 'Sizes';
 
   if (!options)
     return { colorOptions, sizeOptions, colorOptionsLabel, sizeOptionsLabel };
 
   options.forEach((option) => {
     option.values.forEach((value) => {
-      if (value.swatch_data.__typename === "ColorSwatchData") {
+      if (value.swatch_data.__typename === 'ColorSwatchData') {
         value.class = `bg-${value.label.toLowerCase()}`;
         colorOptions.push(value);
         colorOptionsLabel = option.label;
       }
-      if (value.swatch_data.__typename === "TextSwatchData") {
+      if (value.swatch_data.__typename === 'TextSwatchData') {
         sizeOptions.push(value);
         sizeOptionsLabel = option.label;
       }
