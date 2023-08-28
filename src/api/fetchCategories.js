@@ -1,4 +1,4 @@
-import { endpoint } from './endpoint';
+import {endpoint} from './endpoint';
 
 const CATEGORIES = `
   query ProductCategories($categoryLevel: String!) {
@@ -24,9 +24,7 @@ const CATEGORIES = `
 const fetchCategories = async (categoryLevel = '2') => {
   const query = CATEGORIES;
   const variables = { categoryLevel: categoryLevel };
-  const url = endpoint;
-
-  const response = await fetch(url, {
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query, variables }),

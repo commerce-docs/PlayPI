@@ -1,4 +1,4 @@
-import { endpoint } from './endpoint';
+import {endpoint} from './endpoint';
 
 const PRODUCTS = `
   query ProductsQuery($selectedCategory: String!) {
@@ -35,9 +35,7 @@ const PRODUCTS = `
 const fetchProducts = async (selectedCategory) => {
   const query = PRODUCTS;
   const variables = { selectedCategory: selectedCategory };
-  const url = endpoint;
-
-  const response = await fetch(url, {
+  const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query, variables }),
