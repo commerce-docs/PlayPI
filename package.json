@@ -7,8 +7,7 @@
   "license": "Apache-2.0",
   "main": "index.html",
   "scripts": {
-    "build": "vite build",
-    "build:prod": "NODE_ENV=production vite build && vite preview",
+    "build": "NODE_ENV=production vite build",
     "clean": "rm -rf dist && rm -rf node_modules",
     "dev": "vite",
     "format": "yarn prettier . --write",
