@@ -10,7 +10,7 @@
     "build": "vite build && vite preview --open",
     "build:prod": "NODE_ENV=production vite build && vite preview",
     "clean": "rm -rf dist && rm -rf node_modules",
-    "dev": "concurrently --kill-others \"npm run start:proxy\" \"vite --open\"",
+    "dev": "concurrently --kill-others \"npm run start:proxy\" \"vite\"",
     "format": "yarn prettier . --write",
     "preview": "vite preview",
     "start:proxy": "node proxy.js"
