@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import fetchCategories from './api/fetchCategories';
 import fetchProducts from './api/fetchProducts';
 import fetchDetails from './api/fetchDetails';
@@ -54,7 +54,7 @@ const AppProvider = ({ children }) => {
     (async () => {
       try {
         const categories = await fetchCategories(state.categoryLevel);
-        dispatch({ type: 'SET_CATEGORIES', categories });
+        dispatch({ type: `SET_CATEGORIES`, categories });
       } catch (error) {
         console.error('Error fetching categories:', error);
       }

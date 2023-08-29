@@ -23,14 +23,18 @@ const CATEGORIES = `
 
 const fetchCategories = async (categoryLevel = '2') => {
   const query = CATEGORIES;
-  const variables = { categoryLevel: categoryLevel };
+  const variables = { categoryLevel };
+
   const response = await fetch(endpoint, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
     body: JSON.stringify({ query, variables }),
   });
-  const data = await response.json();
 
+  const data = await response.json();
   return data.data?.categories?.items;
 };
 
