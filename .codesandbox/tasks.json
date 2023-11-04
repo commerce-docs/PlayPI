@@ -17,6 +17,10 @@
       "name": "Install Dependencies",
       "command": "yarn install"
     },
+    "build-app": {
+      "name": "Build App",
+      "command": "yarn build"
+    },
     "start-app": {
       "name": "Start App",
       "command": "yarn preview",
