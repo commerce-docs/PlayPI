@@ -22,7 +22,7 @@
       "command": "yarn preview",
       "runAtStart": true,
       "preview": {
-        "port": 4174
+        "port": 5173
       }
     }
   }
