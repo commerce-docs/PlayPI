@@ -3,6 +3,6 @@ NOTICE: All information contained herein is, and remains the property of Adobe a
 */
 
 export const endpoint =
-  process.env.NODE_ENV === 'production'
-    ? process.env.VENIA_URL // <-- for production use in codesandbox.
-    : 'http://localhost:3001'; // <-- for local development server.js
+  import.meta.env.MODE === 'production'
+    ? import.meta.env.VITE_VENIA_URL
+    : 'http://localhost:3001';
