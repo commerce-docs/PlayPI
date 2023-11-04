@@ -8,13 +8,12 @@
   "main": "index.html",
   "scripts": {
     "build": "NODE_ENV=production vite build",
+    "preview": "vite preview",
     "clean": "rm -rf dist && rm -rf node_modules",
     "dev": "vite",
     "format": "yarn prettier . --write",
-    "preview": "vite preview",
     "start:proxy": "node src/api/server.js",
-    "start-dev": "concurrently -k -s all 'npm run start:proxy' 'npm run dev'",
-    "start": "NODE_ENV=production vite build && vite preview"
+    "start": "concurrently -k -s all 'npm run start:proxy' 'npm run dev'"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",

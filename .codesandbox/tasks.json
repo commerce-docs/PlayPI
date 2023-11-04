@@ -7,7 +7,7 @@
     },
     "start-app": {
       "name": "Run Dev Server",
-      "command": "yarn start",
+      "command": "yarn preview",
       "runAtStart": true
     }
   }
