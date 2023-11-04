@@ -18,7 +18,7 @@
       "command": "yarn install"
     },
     "start-app": {
-      "name": "Run Dev Server",
+      "name": "Start App",
       "command": "yarn preview",
       "runAtStart": true,
       "preview": {
