@@ -21,9 +21,16 @@
       "name": "Build App",
       "command": "yarn build"
     },
-    "start-app": {
-      "name": "Start App",
+    "preview-app": {
+      "name": "Preview App",
       "command": "yarn preview",
+      "preview": {
+        "port": 4173
+      }
+    },
+    "start-app": {
+      "name": "Build and Preview App",
+      "command": "yarn start",
       "runAtStart": true,
       "preview": {
         "port": 4173

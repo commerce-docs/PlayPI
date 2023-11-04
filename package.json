@@ -13,7 +13,9 @@
     "dev": "vite",
     "format": "yarn prettier . --write",
     "start:proxy": "node src/api/server.js",
-    "start": "concurrently -k -s all 'npm run start:proxy' 'npm run dev'"
+    "start-dev": "concurrently -k -s all 'npm run start:proxy' 'npm run dev'",
+    "start": "NODE_ENV=production vite build && vite preview"
+
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
