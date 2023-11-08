@@ -1,5 +1,5 @@
 {
-  "name": "demo-apis",
+  "name": "adobe-apis",
   "description": "GraphQL Products queries for storefront demo",
   "version": "1.0.0",
   "type": "module",

@@ -15,7 +15,25 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
 
-  demo-storefront:
+  packages/adobe-apis:
+    dependencies:
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
+      express:
+        specifier: ^4.18.2
+        version: 4.18.2
+      graphql:
+        specifier: ^16.8.1
+        version: 16.8.1
+      http-proxy-middleware:
+        specifier: ^2.0.6
+        version: 2.0.6
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+
+  packages/base-components:
     dependencies:
       '@headlessui/react':
         specifier: ^1.7.17
@@ -23,21 +41,42 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.18
         version: 2.0.18(react@18.2.0)
-      demo-apis:
+      adobe-apis:
         specifier: workspace:*
-        version: link:../packages/demo-apis
-      demo-components:
+        version: link:../adobe-apis
+
+  packages/storefront-components:
+    dependencies:
+      adobe-apis:
         specifier: workspace:*
-        version: link:../packages/demo-components
-      demo-composites:
+        version: link:../adobe-apis
+      base-components:
         specifier: workspace:*
-        version: link:../packages/demo-composites
+        version: link:../base-components
+
+  storefront:
+    dependencies:
+      '@headlessui/react':
+        specifier: ^1.7.17
+        version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
+      '@heroicons/react':
+        specifier: ^2.0.18
+        version: 2.0.18(react@18.2.0)
+      adobe-apis:
+        specifier: workspace:*
+        version: link:../packages/adobe-apis
+      base-components:
+        specifier: workspace:*
+        version: link:../packages/base-components
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      storefront-components:
+        specifier: workspace:*
+        version: link:../packages/storefront-components
     devDependencies:
       '@tailwindcss/aspect-ratio':
         specifier: ^0.4.2
@@ -72,45 +111,6 @@ importers:
       vite:
         specifier: ^4.5.0
         version: 4.5.0
-
-  packages/demo-apis:
-    dependencies:
-      cors:
-        specifier: ^2.8.5
-        version: 2.8.5
-      express:
-        specifier: ^4.18.2
-        version: 4.18.2
-      graphql:
-        specifier: ^16.8.1
-        version: 16.8.1
-      http-proxy-middleware:
-        specifier: ^2.0.6
-        version: 2.0.6
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-
-  packages/demo-components:
-    dependencies:
-      '@headlessui/react':
-        specifier: ^1.7.17
-        version: 1.7.17(react-dom@18.2.0)(react@18.2.0)
-      '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
-      demo-apis:
-        specifier: workspace:*
-        version: link:../demo-apis
-
-  packages/demo-composites:
-    dependencies:
-      demo-apis:
-        specifier: workspace:*
-        version: link:../demo-apis
-      demo-components:
-        specifier: workspace:*
-        version: link:../demo-components
 
 packages:
 

@@ -4,7 +4,7 @@ NOTICE: All information contained herein is, and remains the property of Adobe a
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { useDataProvider } from 'demo-apis';
+import { useDataProvider } from 'adobe-apis';
 
 export function Modal({ children }) {
   const { modalIsOpen, openModal } = useDataProvider();

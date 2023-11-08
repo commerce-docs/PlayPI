@@ -2,9 +2,9 @@
 NOTICE: All information contained herein is, and remains the property of Adobe and its suppliers, if any. The intellectual and technical concepts contained herein are proprietary to Adobe and its suppliers and are protected by all applicable intellectual property laws, including trade secret and copyright laws. Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Adobe.
 */
 
-import { useDataProvider } from 'demo-apis';
-import { Spinner } from 'demo-components';
-import { classNames } from 'demo-components';
+import { useDataProvider } from 'adobe-apis';
+import { Spinner } from 'base-components';
+import { classNames } from 'base-components';
 import noImage from './assets/no-image.jpg';
 
 export const ProductCategories = () => {

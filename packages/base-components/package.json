@@ -1,5 +1,5 @@
 {
-  "name": "demo-components",
+  "name": "base-components",
   "description": "Base components used to build the composite components for storefront demo",
   "version": "1.0.0",
   "type": "module",
@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "dependencies": {
-    "demo-apis": "workspace:*",
+    "adobe-apis": "workspace:*",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18"
   }

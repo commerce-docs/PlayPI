@@ -2,16 +2,16 @@
 NOTICE: All information contained herein is, and remains the property of Adobe and its suppliers, if any. The intellectual and technical concepts contained herein are proprietary to Adobe and its suppliers and are protected by all applicable intellectual property laws, including trade secret and copyright laws. Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Adobe.
 */
 
-import { useDataProvider } from 'demo-apis';
-import { Spinner } from 'demo-components';
-import { Images } from 'demo-components';
-import { Button } from 'demo-components';
-import { Description } from 'demo-components';
-import { Attributes } from 'demo-components';
-import { Price } from 'demo-components';
-import { ColorOptions } from 'demo-components';
-import { SizeOptions } from 'demo-components';
-import { Breadcrumbs } from 'demo-components';
+import { useDataProvider } from 'adobe-apis';
+import { Spinner } from 'base-components';
+import { Images } from 'base-components';
+import { Button } from 'base-components';
+import { Description } from 'base-components';
+import { Attributes } from 'base-components';
+import { Price } from 'base-components';
+import { ColorOptions } from 'base-components';
+import { SizeOptions } from 'base-components';
+import { Breadcrumbs } from 'base-components';
 
 export function ProductDetails() {
   const {

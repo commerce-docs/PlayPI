@@ -1,20 +1,20 @@
 {
-  "name": "demo-storefront-monorepo",
+  "name": "storefront-monorepo",
   "description": "Explore the Adobe Commerce Products GraphQL API",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "license": "Apache-2.0",
-  "main": "./demo-storefront/index.html",
+  "main": "./storefront/index.html",
   "scripts": {
-    "build": "NODE_ENV=production pnpm --filter demo-storefront run build",
-    "preview": "pnpm --filter demo-storefront run preview",
-    "clean": "rm -rf demo-storefront/dist && rm -rf demo-storefront/node_modules && rm -rf packages/**/node_modules && rm -rf node_modules && rm -rf pnpm-lock.yaml",
-    "dev": "pnpm --filter demo-storefront run dev",
+    "build": "NODE_ENV=production pnpm --filter storefront run build",
+    "preview": "pnpm --filter storefront run preview",
+    "clean": "rm -rf storefront/dist && rm -rf storefront/node_modules && rm -rf packages/**/node_modules && rm -rf node_modules && rm -rf pnpm-lock.yaml",
+    "dev": "pnpm --filter storefront run dev",
     "format": "pnpm prettier . --write",
-    "start:proxy": "pnpm --filter demo-apis run start:proxy",
+    "start:proxy": "pnpm --filter adobe-apis run start:proxy",
     "start:dev": "concurrently -k -s all 'pnpm run start:proxy' 'pnpm run dev'",
-    "start": "NODE_ENV=production pnpm --filter demo-storefront run build && pnpm --filter demo-storefront run preview"
+    "start": "NODE_ENV=production pnpm --filter storefront run build && pnpm --filter storefront run preview"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",

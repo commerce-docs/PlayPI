@@ -11,6 +11,6 @@ These links will take you to the docs for the queries used:
 
 ## Storefront usage
 
-The React storefront demo (shown below) uses the `categories` query to fetch the product categories and the `products` query to fetch the product lists and product details.
+The React storefront demo (screenshot below) uses a `categories` query to fetch the product categories and two `products` queries to fetch the product lists and product details for the storefront UI.
 
 ![React storefront that used the ](storefront.png)

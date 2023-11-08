@@ -1,5 +1,5 @@
 {
-  "name": "demo-storefront",
+  "name": "storefront",
   "description": "Example React storefront built with Adobe Commerce Product API",
   "version": "1.0.0",
   "type": "module",
@@ -17,9 +17,9 @@
     "start": "NODE_ENV=production vite build && vite preview"
   },
   "dependencies": {
-    "demo-apis": "workspace:*",
-    "demo-composites": "workspace:*",
-    "demo-components": "workspace:*",
+    "adobe-apis": "workspace:*",
+    "storefront-components": "workspace:*",
+    "base-components": "workspace:*",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "react": "^18.2.0",
