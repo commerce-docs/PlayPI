@@ -3,12 +3,11 @@ NOTICE: All information contained herein is, and remains the property of Adobe a
 */
 
 import { endpoint } from './endpoint';
-import { CATEGORIES_QUERY } from '../queries/categoriesQuery';
+import { DETAILS_QUERY } from '../queries/detailsQuery';
 
-export const fetchCategories = async (categoryLevel = '2') => {
-  console.log(endpoint);
-  const query = CATEGORIES_QUERY;
-  const variables = { categoryLevel: categoryLevel };
+export const fetchDetails = async (productSku) => {
+  const query = DETAILS_QUERY;
+  const variables = { productSku: productSku };
   const response = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -16,6 +15,6 @@ export const fetchCategories = async (categoryLevel = '2') => {
     body: JSON.stringify({ query, variables }),
   });
   const data = await response.json();
-
-  return data.data?.categories?.items;
+  
+  return data.data.products.items[0];
 };

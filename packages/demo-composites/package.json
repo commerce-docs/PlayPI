@@ -1,0 +1,13 @@
+{
+  "name": "demo-composites",
+  "description": "Dropin composite components for storefront websites",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Adobe",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "dependencies": {
+    "demo-apis": "workspace:*",
+    "demo-components": "workspace:*"
+  }
+}

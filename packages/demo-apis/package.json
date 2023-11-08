@@ -1,6 +1,6 @@
 {
-  "name": "api",
-  "description": "Adobe Commerce Products API example queries",
+  "name": "demo-apis",
+  "description": "GraphQL Products queries for storefront demo",
   "version": "1.0.0",
   "type": "module",
   "author": "Adobe",

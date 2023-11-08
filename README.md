@@ -1,4 +1,4 @@
-# Commerce Products API Explorer
+# Storefront demo using Adobe Commerce GraphQL APIs
 
 With just three product-based GraphQL queries, this simple React app helps highlight some of the Products API from Adobe's extensive Commerce API. The three queries fetch different types of product data to drive a simple products page that might exist in a larger storefront. Nearly 100% of the app's content is returned from queries to our reference Venia store: [venia.magento.com](https://venia.magento.com).
 
@@ -6,48 +6,52 @@ This app is not meant to be a beacon of frontend best practices. [Other teams at
 
 ## Project structure
 
-The project contains two main directories:
+The project is organized into one storefront app and three packages:
 
-- `src/api` — for GraphQL queries, client, and endpoint
-- `src/components` — for displaying the data
+- `demo-storefront` — The example React app that imports the other packages.
+- `packages/demo-apis` — Provides the GraphQL queries used to fetch the product data.
+- `packages/demo-components` — Provides the basic React components to build the main storefront components.
+- `packages/demo-composites` — Provides the main storefront components that use the GraphQL queries and the React components to display product data.
 
-## Project API
 
-The `api` directory contains the GraphQL queries to Venia's Commerce backend:
+## `demo-apis`
 
-- `fetchCategories.js` — Defines the CATEGORIES query for fetching the product categories from the Venia store.
-- `fetchProducts.js` — Defines the PRODUCTS query for fetching the selected category's products (limited to 12 for simplicity).
-- `fetchDetails.js` — Defines the DETAILS query for fetching the selected product's details.
+This package contains the GraphQL queries and fetch functions for Venia's Commerce backend:
 
-To keep things simple, the Commerce Product APIs accessed in this app use JavaScript's Fetch API and Venia's GraphQL endpoint.
-But of course you can use any GraphQL library you want.
+- `fetchCategories.js` — Uses the `CATEGORIES_QUERY` to fetch the product categories from the Venia store.
+- `fetchProducts.js` — Uses the `PRODUCTS_QUERY` to fetch the selected category's products (currently limited to 12 for better performance).
+- `fetchDetails.js` — Uses the `DETAILS_QUERY` to fetch the selected product's details.
 
-## Project components
+To keep the example as simple and trasparent as possible, the fetch functions use JavaScript's Fetch API and a GraphQL endpoint for Venia sample data.
 
-For the sake of simplicity, each query has a corresponding component to display the data returned:
 
-- `ProductCategories.jsx`
-- `ProductList.jsx`
-- `ProductDetails.jsx`
+## `demo-components`
 
-The `base` directory contains a variety of other components used as children within the three main components.
+This package provides all the common components like buttons, breadcrumbs, and modals. These components are the building blocks for larger composite storefront components —  like product category menus, product display lists, and product detail pages.
 
-Tailwindcss is used for all component styling.
+Tailwindcss is used for all common components styling.
+
+## `demo-composites`
+
+This package provides three composite components that use and display product data retrieved from the three corresponding GraphQL queries from the `demo-apis` package. The composite components are:
+
+- `ProductCategories.jsx` — Uses the data retrieved from the `CATEGORIES_QUERY`.
+- `ProductList.jsx` — Uses the data retrieved from the `PRODUCTS_QUERY`.
+- `ProductDetails.jsx` — Uses the data retrieved from the `DETAILS_QUERY`.
+
+Tailwindcss is used for all composite components styling.
 
 ## Run the app
 
 1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
 2. Change directories: `cd playpi`
-3. Run `yarn` to install dependencies.
-4. Run `yarn start:proxy` to start the project's proxy server so you can access Venia's GraphQL endpoint.
-5. Open another shell (to keep the proxy-server running)
-6. Run `yarn dev` to launch the product page example.
+3. Run `pnpm install` to install all dependencies.
+4. Run `pnpm run start:dev` to run the storefront locally.
 
 ## Things to finish
 
-- **Done**. ~~Fix color and size configurable options.~~
-- **Done**. ~~Display `ProductDetails` in a modal. Currently, the product details appears at the bottom of the page.~~
-- _In-Progress_. Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to sandbox the project.
+- Use [Stackblitz](https://stackblitz.com/) or [Codesandbox](https://codesandbox.io/) to embed the project into a docs site that provides an interactive experience for learning about the Adobe Commerce API.
+  
 - Create a "data-only" view. No product images or text will be displayed. Only the GraphQL fields and the component name that uses them will be rendered on the screen—in boxes at the same locations in the UI. The purpose is to demonstrate how data from the Commerce GraphQL API feeds a frontend — any frontend!
 
 ## The future of Adobe Commerce frontend components

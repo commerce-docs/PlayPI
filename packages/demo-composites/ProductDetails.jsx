@@ -2,16 +2,16 @@
 NOTICE: All information contained herein is, and remains the property of Adobe and its suppliers, if any. The intellectual and technical concepts contained herein are proprietary to Adobe and its suppliers and are protected by all applicable intellectual property laws, including trade secret and copyright laws. Dissemination of this information or reproduction of this material is strictly forbidden unless prior written permission is obtained from Adobe.
 */
 
-import { useDataProvider } from 'api';
-import { Spinner } from 'components';
-import { Images } from 'components';
-import { Button } from 'components';
-import { Description } from 'components';
-import { Attributes } from 'components';
-import { Price } from 'components';
-import { ColorOptions } from 'components';
-import { SizeOptions } from 'components';
-import { Breadcrumbs } from 'components';
+import { useDataProvider } from 'demo-apis';
+import { Spinner } from 'demo-components';
+import { Images } from 'demo-components';
+import { Button } from 'demo-components';
+import { Description } from 'demo-components';
+import { Attributes } from 'demo-components';
+import { Price } from 'demo-components';
+import { ColorOptions } from 'demo-components';
+import { SizeOptions } from 'demo-components';
+import { Breadcrumbs } from 'demo-components';
 
 export function ProductDetails() {
   const {
@@ -31,9 +31,6 @@ export function ProductDetails() {
   } = useDataProvider();
 
   if (isLoading) return <Spinner />;
-
-  console.log('🚀 colorOptions:', colorOptions);
-  console.log('🚀 sizeOptions:', sizeOptions);
 
   return (
     <div>

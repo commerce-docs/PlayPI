@@ -1,13 +1,13 @@
 {
-  "name": "components",
-  "description": "Base (atomic) components for building dropins",
+  "name": "demo-components",
+  "description": "Base components used to build the composite components for storefront demo",
   "version": "1.0.0",
   "type": "module",
   "author": "Adobe",
   "license": "Apache-2.0",
   "main": "index.js",
   "dependencies": {
-    "api": "workspace:*",
+    "demo-apis": "workspace:*",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18"
   }
