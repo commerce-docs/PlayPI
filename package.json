@@ -9,7 +9,7 @@
   "scripts": {
     "build": "NODE_ENV=production pnpm --filter storefront run build",
     "preview": "pnpm --filter storefront run preview",
-    "clean": "rm -rf dist && rm -rf node_modules",
+    "clean": "rm -rf storefront/dist && rm -rf storefront/node_modules && rm -rf packages/**/node_modules && rm -rf node_modules && rm -rf pnpm-lock.yaml",
     "dev": "pnpm --filter storefront run dev",
     "format": "pnpm prettier . --write",
     "start:proxy": "pnpm --filter api run start:proxy",
