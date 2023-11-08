@@ -1,0 +1,13 @@
+{
+  "name": "dropins",
+  "description": "composite components for ecommerce storefronts",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Adobe",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "api": "workspace:*",
+    "components": "workspace:*"
+  }
+}

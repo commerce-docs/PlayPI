@@ -1,0 +1,14 @@
+{
+  "name": "components",
+  "description": "base components for dropins",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Adobe",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "api": "workspace:*",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18"
+  }
+}

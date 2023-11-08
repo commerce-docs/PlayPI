@@ -1,45 +1,24 @@
 {
-  "name": "products-api-app",
+  "name": "storefront-monorepo",
   "description": "Explore the Adobe Commerce Products GraphQL API",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "license": "Apache-2.0",
-  "main": "index.html",
+  "main": "./storefront/index.html",
   "scripts": {
-    "build": "NODE_ENV=production vite build",
-    "preview": "vite preview",
+    "build": "NODE_ENV=production pnpm --filter storefront run build",
+    "preview": "pnpm --filter storefront run preview",
     "clean": "rm -rf dist && rm -rf node_modules",
-    "dev": "vite",
-    "format": "yarn prettier . --write",
-    "start:proxy": "node src/api/server.js",
-    "start-dev": "concurrently -k -s all 'npm run start:proxy' 'npm run dev'",
-    "start": "NODE_ENV=production vite build && vite preview"
-
-  },
-  "dependencies": {
-    "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.0.18",
-    "@stackblitz/sdk": "^1.9.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "graphql": "^16.8.1",
-    "http-proxy-middleware": "^2.0.6",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "dev": "pnpm --filter storefront run dev",
+    "format": "pnpm prettier . --write",
+    "start:proxy": "pnpm --filter api run start:proxy",
+    "start:dev": "concurrently -k -s all 'pnpm run start:proxy' 'pnpm run dev'",
+    "start": "NODE_ENV=production pnpm --filter storefront run build && pnpm --filter storefront run preview"
   },
   "devDependencies": {
-    "@tailwindcss/aspect-ratio": "^0.4.2",
-    "@tailwindcss/forms": "^0.5.6",
-    "@tailwindcss/typography": "^0.5.10",
-    "@vitejs/plugin-react": "^4.1.1",
-    "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
-    "https": "^1.0.0",
-    "postcss": "^8.4.31",
-    "prettier": "3.0.3",
-    "prettier-plugin-tailwindcss": "^0.5.6",
-    "tailwindcss": "^3.3.5",
-    "vite": "^4.5.0"
-  }
+    "prettier": "3.0.3"
+  },
+  "packageManager": "pnpm@8.10.0"
 }

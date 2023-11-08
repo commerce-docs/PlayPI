@@ -1,0 +1,19 @@
+{
+  "name": "api",
+  "description": "products api example queries",
+  "version": "1.0.0",
+  "type": "module",
+  "author": "Adobe",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "start:proxy": "node ./utils/proxyServer.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "http-proxy-middleware": "^2.0.6",
+    "react": "^18.2.0"
+  }
+}
