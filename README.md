@@ -4,6 +4,13 @@ With just three product-based GraphQL queries, this simple React app helps highl
 
 This app is not meant to be a beacon of frontend best practices. [Other teams at Adobe are actively working on that](#the-future-of-adobe-commerce-frontend-components). It's only meant to demonstrate just how much data you can retrieve and present with the Commerce API.
 
+## Run the app
+
+1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
+2. Change directories: `cd playpi`
+3. Run `pnpm install` to install all dependencies.
+4. Run `pnpm start:dev` to run the storefront locally.
+
 ## Project structure
 
 The project is organized into one storefront app and three packages:
@@ -40,13 +47,6 @@ This package provides three composite components that use and display product da
 - `ProductDetails.jsx` — Uses the data retrieved from the `DETAILS_QUERY`.
 
 Tailwindcss is used for all composite components styling.
-
-## Run the app
-
-1. Clone the repo: `git clone git@github.com:commerce-docs/playpi.git`
-2. Change directories: `cd playpi`
-3. Run `pnpm install` to install all dependencies.
-4. Run `pnpm start:dev` to run the storefront locally.
 
 ## Things to finish
 
