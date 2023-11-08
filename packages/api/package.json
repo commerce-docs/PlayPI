@@ -1,10 +1,10 @@
 {
   "name": "api",
-  "description": "products api example queries",
+  "description": "Adobe Commerce Products API example queries",
   "version": "1.0.0",
   "type": "module",
   "author": "Adobe",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
     "start:proxy": "node ./utils/proxyServer.js"

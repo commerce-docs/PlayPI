@@ -1,6 +1,6 @@
 {
   "name": "storefront",
-  "description": "Explore the Adobe Commerce Products GraphQL API",
+  "description": "Example React storefront built with Adobe Commerce Product API",
   "version": "1.0.0",
   "type": "module",
   "author": "Adobe",

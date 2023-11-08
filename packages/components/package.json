@@ -1,10 +1,10 @@
 {
   "name": "components",
-  "description": "base components for dropins",
+  "description": "Base (atomic) components for building dropins",
   "version": "1.0.0",
   "type": "module",
   "author": "Adobe",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "main": "index.js",
   "dependencies": {
     "api": "workspace:*",
